@@ -204,19 +204,58 @@ class HomeScreen extends StatelessWidget {
           )
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        iconSize: 32,
-        selectedItemColor: Color(0xFF4E74F9),
-        unselectedItemColor: Colors.grey,
-        selectedFontSize: 18,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.upcoming), label: 'Career'),
-          BottomNavigationBarItem(icon: Icon(Icons.slow_motion_video), label: 'Clipps'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),
-
+      bottomNavigationBar: GNav(
+        curve: Curves.fastOutSlowIn,
+        duration: Duration(milliseconds: 100),
+        tabs: [
+           GButton(
+             gap: 10,
+             icon: Icons.home, text: "Home",
+             iconActiveColor: Color(0xFF4E74F9),
+             iconColor: Colors.grey,
+             textColor: Color(0xFF4E74F9),
+             backgroundColor: Colors.blueAccent.withOpacity(0.2),
+             iconSize: 28,
+             padding: EdgeInsets.symmetric(horizontal: 18, vertical: 5),
+           ),
+           GButton(
+             gap: 10,
+             icon: Icons.group_work, text: "Career",
+             iconActiveColor: Color(0xFF4E74F9),
+             iconColor: Colors.grey,
+             textColor: Color(0xFF4E74F9),
+             backgroundColor: Colors.blueAccent.withOpacity(0.2),
+             iconSize: 28,
+             padding: EdgeInsets.symmetric(horizontal: 18, vertical: 5),
+           ),
+           GButton(
+             gap: 10,
+             icon: Icons.slow_motion_video_outlined, text: "Clipps",
+             iconActiveColor: Color(0xFF4E74F9),
+             iconColor: Colors.grey,
+             textColor: Color(0xFF4E74F9),
+             backgroundColor: Colors.blueAccent.withOpacity(0.2),
+             iconSize: 28,
+             padding: EdgeInsets.symmetric(horizontal: 18, vertical: 5),
+           ),
+           GButton(
+             gap: 10,
+             icon: Icons.person, text: "Account",
+             iconActiveColor: Color(0xFF4E74F9),
+             iconColor: Colors.grey,
+             textColor: Color(0xFF4E74F9),
+             backgroundColor: Colors.blueAccent.withOpacity(0.2),
+             iconSize: 28,
+             padding: EdgeInsets.symmetric(horizontal: 18, vertical: 5),
+           ),
         ],
-      ),
+        // selectedIndex: _index,
+        // onTabChange: (index){
+        //   setState((){
+        //     _index=index;
+        //   });
+
+      )
     );
   }
 }
