@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 class HomeScreen extends StatelessWidget {
   List categories=[
     "Category",
@@ -26,9 +27,10 @@ class HomeScreen extends StatelessWidget {
     Icon(Icons.emoji_events, color: Colors.white,size: 30,),
   ];
   List image=[
-    "Flutter",
+    "C#",
     'React Native',
-    'C#'
+    'Python',
+    'Flutter'
   ];
   @override
   Widget build(BuildContext context) {
@@ -153,6 +155,8 @@ class HomeScreen extends StatelessWidget {
                     physics: NeverScrollableScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount:2,
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
                       childAspectRatio: (MediaQuery.of(context).size.height-50-25)/(4*240),
                     ),
                   itemBuilder: (context, index){
@@ -166,7 +170,29 @@ class HomeScreen extends StatelessWidget {
                         ),
                         child: Column(
                           children: [
-
+                              Padding(padding: EdgeInsets.all(10),
+                                child: Image.asset(
+                                  'assets/${image[index]}.png',
+                                  width: 100,
+                                  height: 100,
+                                ),
+                              ),
+                            SizedBox(height: 10,),
+                            Text(image[index],
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 22,
+                              color: Colors.black.withOpacity(0.6),
+                             ),
+                            ),
+                            SizedBox(height: 10,),
+                            Text("55 Videos",
+                             style: TextStyle(
+                               fontSize: 15,
+                               fontWeight: FontWeight.w500,
+                               color: Colors.black.withOpacity(0.5),
+                             )
+                              ,)
                           ],
                         ),
                       ),
@@ -176,6 +202,19 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           )
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        iconSize: 32,
+        selectedItemColor: Color(0xFF4E74F9),
+        unselectedItemColor: Colors.grey,
+        selectedFontSize: 18,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.upcoming), label: 'Career'),
+          BottomNavigationBarItem(icon: Icon(Icons.slow_motion_video), label: 'Clipps'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),
+
         ],
       ),
     );
