@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:shiksha_tech/lecture_screen.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -169,7 +170,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     itemBuilder: (context, index){
                       return InkWell(
-                        onTap: (){},
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>LectureScreen(image[index])));
+                        },
                         child: Container(
                           padding: EdgeInsets.symmetric(vertical: 20, horizontal:10 ),
                           decoration: BoxDecoration(
