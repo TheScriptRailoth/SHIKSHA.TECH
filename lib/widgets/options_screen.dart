@@ -22,7 +22,7 @@ class OptionsScreen extends StatelessWidget {
                         radius: 16,
                       ),
                       SizedBox(width: 6),
-                      Text('flutter_developer02'),
+                      Text('shiksha.tech', style: TextStyle(fontWeight: FontWeight.bold),),
                       SizedBox(width: 10),
                       Icon(Icons.verified, size: 15),
                       SizedBox(width: 6),
@@ -38,7 +38,7 @@ class OptionsScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(width: 6),
-                  Text('Flutter is beautiful and fast 💙❤💛 ..'),
+                  Text('Knowledge is power💙 ..'),
                   SizedBox(height: 10),
                   Row(
                     children: [
@@ -54,14 +54,14 @@ class OptionsScreen extends StatelessWidget {
               Column(
                 children: [
                   Icon(Icons.favorite_outline),
-                  Text('601k'),
+                  Text('59k'),
                   SizedBox(height: 20),
-                  Icon(Icons.comment_rounded),
-                  Text('1123'),
-                  SizedBox(height: 20),
+                  Icon(Icons.comment_outlined),
+                  Text('1223'),
+                  SizedBox(height: 25),
                   Transform(
                     transform: Matrix4.rotationZ(5.8),
-                    child: Icon(Icons.send),
+                    child: Icon(Icons.send_rounded),
                   ),
                   SizedBox(height: 50),
                   Icon(Icons.more_vert),
