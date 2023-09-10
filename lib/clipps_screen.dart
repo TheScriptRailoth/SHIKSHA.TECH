@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:card_swiper/card_swiper.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:shiksha_tech/widgets/content_screen.dart';
-
+import 'package:google_nav_bar/google_nav_bar.dart';
 class ClippScreen extends StatelessWidget {
   final List<String> videos = [
     'https://firebasestorage.googleapis.com/v0/b/sih-project-19809.appspot.com/o/Shirt%20clips%2FSaveIG.App_3169172331812966825_6478443618.mp4?alt=media&token=110cfc38-10d4-46c7-b9f0-4d369093e0c0',
@@ -34,8 +35,9 @@ class ClippScreen extends StatelessWidget {
                     Text(
                       'Clipps',
                       style: TextStyle(
+                        color: Color(0xFF4E74F9),
                         fontSize: 22,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],

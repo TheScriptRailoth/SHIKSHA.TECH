@@ -38,7 +38,53 @@ class HomeScreenWidget extends StatelessWidget {
       'Flutter'
     ];
     return Scaffold(
-      body:         ListView(
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: Color(0xFF4E74F9),
+        actions: <Widget>[
+          IconButton(
+          icon: Icon(Icons.notifications_active_sharp),
+          onPressed: (){},
+        ),
+        ]
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color:Color(0xFF4E74F9),
+              ),
+              child: Text(
+                'Sample',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('Home'),
+              onTap: () {
+                // Handle the Home menu item
+                Navigator.pop(context); // Close the drawer
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Settings'),
+              onTap: () {
+                // Handle the Settings menu item
+                Navigator.pop(context); // Close the drawer
+              },
+            ),
+            // Add more ListTile widgets for other menu items
+          ],
+        ),
+      ),
+      body:ListView(
         children: [
           Container(
             padding: EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 10),
@@ -52,22 +98,6 @@ class HomeScreenWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Icon(
-                      Icons.dashboard,
-                      size: 30,
-                      color: Colors.white,
-                    ),
-                    Icon(
-                      Icons.notifications,
-                      size: 30,
-                      color: Colors.white,
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20,),
                 Padding(padding: EdgeInsets.only(left: 3, bottom: 20),
                   child: Text("Hi, Ashutosh", style: TextStyle(
                     color:Colors.white,fontSize: 25, fontWeight: FontWeight.w600,letterSpacing: 1,wordSpacing: 2,
@@ -77,22 +107,22 @@ class HomeScreenWidget extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.only(top:11, bottom: 15),
                   width: MediaQuery.of(context).size.width,
-                  height: 50,
+                  height: 45,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(50)
                   ),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Search",
-                        hintStyle: TextStyle(
-                            color: Colors.black.withOpacity(0.5)
-                        ),
-                        prefixIcon: Icon(Icons.search, size:25,)
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Search",
+                          hintStyle: TextStyle(
+                              color: Colors.black.withOpacity(0.5)
+                          ),
+                          prefixIcon: Icon(Icons.search, size:25,)
+                      ),
                     ),
-                  ),
                 ),
               ],
             ),

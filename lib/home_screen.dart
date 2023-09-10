@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:shiksha_tech/account_screen.dart';
 import 'package:shiksha_tech/clipps_screen.dart';
 import 'package:shiksha_tech/lecture_screen.dart';
 import 'package:shiksha_tech/widgets/home_screen_widget.dart';
@@ -14,14 +15,22 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-  List<Widget>listOptions=<Widget>[HomeScreenWidget(),CareerScreen(),ClippScreen()];
+  Color navBarColor=Colors.white;
+  List<Widget>listOptions=<Widget>[HomeScreenWidget(),CareerScreen(),ClippScreen(),AccountScreen()];
   @override
   Widget build(BuildContext context) {
+    if (_selectedIndex==2) {
+      navBarColor = Colors.black;
+    } else {
+      navBarColor = Colors.white; // Reset to the default color
+    }
     return Scaffold(
         body: listOptions[_selectedIndex],
+
         bottomNavigationBar: Container(
           height: 55,
           child: GNav(
+            backgroundColor: navBarColor,
             haptic: true,
             gap: 8,
             rippleColor: Colors.grey.withOpacity(0.3),
