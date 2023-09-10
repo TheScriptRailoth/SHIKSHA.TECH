@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shiksha_tech/widgets/descriptionSelection.dart';
+import 'package:shiksha_tech/widgets/videoSelection.dart';
 class LectureScreen extends StatefulWidget {
   String img;
   LectureScreen(this.img);
@@ -135,10 +137,11 @@ class _LectureScreenState extends State<LectureScreen> {
               ),
             ),
             SizedBox(height: 10,),
-            isVideoSelected?videoSelection():descriptionSelection(),
+             isVideoSelected? VideoSelection():DecriptionSelection(),
           ],
         ),
       ),
     );
   }
 }
+
