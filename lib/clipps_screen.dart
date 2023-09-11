@@ -28,7 +28,7 @@ class ClippScreen extends StatelessWidget {
                 scrollDirection: Axis.vertical,
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
