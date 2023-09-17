@@ -188,6 +188,105 @@ class HomeScreenWidget extends StatelessWidget {
                 ),
               ],
             ),
+            SizedBox(height: 20,),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  const SizedBox(width: 20,),
+                  Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 28,
+                        backgroundImage: AssetImage('assets/Flutter.png'),
+                      ),
+                      SizedBox(height: 4,),
+                      Text('Classes', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12 ),)
+                    ],
+                  ),
+                  const SizedBox(width: 20,),
+                  Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 28,
+                        backgroundImage: AssetImage('assets/Flutter.png'),
+                      ),
+                      SizedBox(height: 4,),
+                      Text('Design',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12 ),)
+                    ],
+                  ),
+                  const SizedBox(width: 20,),
+                  Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 28,
+                        backgroundImage: AssetImage('assets/Flutter.png'),
+                      ),
+                      SizedBox(height: 4,),
+                      Text('Communication',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12 ),)
+                    ],
+                  ),
+                  const SizedBox(width: 20,),
+                  Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 28,
+                        backgroundImage: AssetImage('assets/Flutter.png'),
+                      ),
+                      SizedBox(height: 4,),
+                      Text('KIDS',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12 ),)
+                    ],
+                  ),
+                  const SizedBox(width: 20,),
+                  Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 28,
+                        backgroundImage: AssetImage('assets/Flutter.png'),
+                      ),
+                      SizedBox(height: 4,),
+                      Text('Classes',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12 ),)
+                    ],
+                  ),
+                  const SizedBox(width: 20,),
+                  Column(
+                    children: const [
+                      CircleAvatar(
+                        radius: 28,
+                        backgroundImage: AssetImage('assets/Flutter.png'),
+                      ),
+                      SizedBox(height: 4,),
+                      Text('Classes',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12 ),)
+                    ],
+                  ),
+                  const SizedBox(width: 20,),
+                  Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 28,
+                        backgroundImage: AssetImage('assets/Flutter.png'),
+                      ),
+                      SizedBox(height: 4,),
+                      Text('Classes',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12 ),)
+                    ],
+                  ),
+                  const SizedBox(width: 20,),
+                  Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 28,
+                        backgroundImage: AssetImage('assets/Flutter.png'),
+                      ),
+                      SizedBox(height: 4,),
+                      Text('Classes',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12 ),)
+                    ],
+                  ),
+                  const SizedBox(width: 20,),
+                ],
+              ),
+            ),
+            SizedBox(height: 20,)
+
           ],
         ),
       ),
