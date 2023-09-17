@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../lecture_screen.dart';
 class HomeScreenWidget extends StatelessWidget {
   const HomeScreenWidget({super.key});
@@ -84,160 +83,113 @@ class HomeScreenWidget extends StatelessWidget {
           ],
         ),
       ),
-      body:ListView(
-        children: [
-          Container(
-            padding: EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 10),
-            decoration: BoxDecoration(
-              color: Color(0xFF4E74F9),
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20)
-              ),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            Stack(
+              alignment: Alignment.topCenter,
               children: [
-                Padding(padding: EdgeInsets.only(left: 3, bottom: 20),
-                  child: Text("Hi, Ashutosh", style: TextStyle(
-                    color:Colors.white,fontSize: 25, fontWeight: FontWeight.w600,letterSpacing: 1,wordSpacing: 2,
-                  ),
+                Container(
+                  height: 140,
+                  width: MediaQuery.sizeOf(context).width,
+                  decoration: BoxDecoration(
+                    color:Color(0xFF4E74F9),
+                    borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(20),
+                        bottomRight: Radius.circular(20)
+                    ),
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.only(top:11, bottom: 15),
-                  width: MediaQuery.of(context).size.width,
-                  height: 45,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(50)
-                  ),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: "Search",
-                          hintStyle: TextStyle(
-                              color: Colors.black.withOpacity(0.5)
-                          ),
-                          prefixIcon: Icon(Icons.search, size:25,)
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(padding: EdgeInsets.only(left: 7, top: 7),
+                      child: Text("Hi, Ashutosh", style: TextStyle(
+                        color:Colors.white,fontSize: 28, fontWeight: FontWeight.w600,letterSpacing: 1,wordSpacing: 2,
+                      ),
                       ),
                     ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 20, left: 15, right: 15),
-            child: Column(
-              children: [
-                GridView.builder(
-                    itemCount: categories.length,
-                    shrinkWrap:true,
-                    physics: NeverScrollableScrollPhysics(),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      childAspectRatio: 1.1,
+                    Padding(padding: EdgeInsets.only(left: 7),
+                      child: Text("Let's Start Our Learning", style: TextStyle(
+                        color:Colors.white,fontSize: 15, fontWeight: FontWeight.w600,letterSpacing: 1,wordSpacing: 2,
+                      ),
+                      ),
                     ),
-                    itemBuilder:(context,index){
-                      return Column(
+                    SizedBox(height: 20,),
+                    Container(
+                      width: 350,
+                      height: 50,
+                      alignment: Alignment.center,
+                      padding: const EdgeInsets.all(5.0),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15.0)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
-                            height: 60,
-                            width: 60,
-                            decoration: BoxDecoration(
-                              color: category_color[index],
-                              shape: BoxShape.circle,
-                            ),
-                            child: Center(child: category_icon[index],
+                            height: 40.0,
+                            width: 40.0,
+                            alignment: Alignment.center,
+                            child: Container(
+                              child: Icon(Icons.search),
                             ),
                           ),
-                          SizedBox(height: 10,),
-                          Text(categories[index],
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black.withOpacity(0.7),
+                          Flexible(
+                            child: Container(
+                              width: 250,
+                              height: 38,
+                              alignment: Alignment.topCenter,
+                              child: Padding(
+                                padding: const EdgeInsets.only(bottom: 4),
+                                child: TextField(
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(fontSize: 15),
+                                  cursorColor: Colors.black,
+                                  decoration: InputDecoration(
+                                    hintText: "Type Something....",
+                                    hintStyle: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.grey,
+                                    ),
+                                    border: InputBorder.none,
+                                  ),
+                                ),
+                              ),
                             ),
-                          )
+                          ),
+                          SizedBox(width: 10.0),
+                          Container(
+                            height: 40.0,
+                            width: 40.0,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF4E74F9).withOpacity(0.7),
+                              borderRadius: BorderRadius.circular(10.0),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0xFF4E74F9).withOpacity(0.5),
+                                  spreadRadius: 0.0,
+                                  blurRadius: 6.0,
+                                  offset: Offset(0, 2),
+                                )
+                              ],
+                            ),
+                            child: Container(
+                                child: Icon(Icons.filter_alt)
+                            ),
+                          ),
                         ],
-                      );
-                    }
-                ),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Courses", style: TextStyle(
-                      fontSize: 23,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    ),
-                    Text("See All", style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xFF4E74F9),
-                    ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 10,),
-                GridView.builder(
-                  itemCount: image.length,
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount:2,
-                    mainAxisSpacing: 10,
-                    crossAxisSpacing: 10,
-                    childAspectRatio: (MediaQuery.of(context).size.height-50-25)/(4*240),
-                  ),
-                  itemBuilder: (context, index){
-                    return InkWell(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>LectureScreen(image[index])));
-                      },
-                      child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 20, horizontal:10 ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Color(0xFFF5F3FF),
-                        ),
-                        child: Column(
-                          children: [
-                            Padding(padding: EdgeInsets.all(10),
-                              child: Image.asset(
-                                'assets/${image[index]}.png',
-                                width: 100,
-                                height: 100,
-                              ),
-                            ),
-                            SizedBox(height: 10,),
-                            Text(image[index],
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 22,
-                                color: Colors.black.withOpacity(0.6),
-                              ),
-                            ),
-                            SizedBox(height: 10,),
-                            Text("55 Videos",
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.black.withOpacity(0.5),
-                              )
-                              ,)
-                          ],
-                        ),
                       ),
-                    );
-                  },
+                    ),
+                 ]
                 ),
               ],
             ),
-          )
-        ],
+          ],
+        ),
       ),
     );
   }
