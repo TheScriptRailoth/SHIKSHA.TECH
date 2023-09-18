@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shiksha_tech/widgets/course_card.dart';
 import 'package:shiksha_tech/widgets/courses_data.dart';
+import 'package:shiksha_tech/widgets/place_holder.dart';
 import '../lecture_screen.dart';
 import 'category.dart';
 import 'category_button.dart';
@@ -43,14 +44,15 @@ class HomeScreenWidget extends StatelessWidget {
       'Flutter'
     ];
     return Scaffold(
+      backgroundColor: Colors.grey.withOpacity(0.1),
       appBar: AppBar(
-        elevation: 0.0,
+        elevation: 0,
         backgroundColor: Color(0xFF4E74F9),
         actions: <Widget>[
           IconButton(
           icon: Icon(Icons.notifications_active_sharp),
           onPressed: (){},
-        ),
+          ),
         ]
       ),
       drawer: Drawer(
@@ -97,7 +99,7 @@ class HomeScreenWidget extends StatelessWidget {
               alignment: Alignment.topCenter,
               children: [
                 Container(
-                  height: 140,
+                  height: 155,
                   width: MediaQuery.sizeOf(context).width,
                   decoration: BoxDecoration(
                     color:Color(0xFF4E74F9),
@@ -110,9 +112,9 @@ class HomeScreenWidget extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(padding: EdgeInsets.only(left: 7, top: 7),
+                    Padding(padding: EdgeInsets.only(left: 7, top: 20),
                       child: Text("Hi, Ashutosh", style: TextStyle(
-                        color:Colors.white,fontSize: 28, fontWeight: FontWeight.w600,letterSpacing: 1,wordSpacing: 2,
+                        color:Colors.white,fontSize: 24, fontWeight: FontWeight.w600,letterSpacing: 1,wordSpacing: 2,
                       ),
                       ),
                     ),
@@ -122,7 +124,7 @@ class HomeScreenWidget extends StatelessWidget {
                       ),
                       ),
                     ),
-                    SizedBox(height: 20,),
+                    SizedBox(height: 30,),
                     Container(
                       width: 350,
                       height: 50,
@@ -331,14 +333,27 @@ class HomeScreenWidget extends StatelessWidget {
                 child: Row(
                   children:
                     List.generate(CoursesJson.length,(index){
-                      return Padding(
-                        padding: const EdgeInsets.only(right: 10),
-                        child: CourseCard(thumbNail: CoursesJson[index]['image'],
-                            videoAmount: CoursesJson[index]['video'],
-                            title:  CoursesJson[index]['title'],
-                            userProfile:  CoursesJson[index]['user_profile'],
-                            userName:  CoursesJson[index]['user_name'],
-                            price:  CoursesJson[index]['price'],
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                // Replace 'YourDestinationScreen' with the actual screen you want to navigate to
+                                return LectureScreen('Flutter');
+                              },
+                            ),
+                          );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10),
+                          child: CourseCard(thumbNail: CoursesJson[index]['image'],
+                              videoAmount: CoursesJson[index]['video'],
+                              title:  CoursesJson[index]['title'],
+                              userProfile:  CoursesJson[index]['user_profile'],
+                              userName:  CoursesJson[index]['user_name'],
+                              price:  CoursesJson[index]['price'],
+                          ),
                         ),
                       );
                     })
@@ -393,21 +408,62 @@ class HomeScreenWidget extends StatelessWidget {
                 child: Row(
                     children:
                     List.generate(CoursesJson.length,(index){
-                      return Padding(
-                        padding: const EdgeInsets.only(right: 10),
-                        child: CourseCard(thumbNail: CoursesJson[index]['image'],
-                          videoAmount: CoursesJson[index]['video'],
-                          title:  CoursesJson[index]['title'],
-                          userProfile:  CoursesJson[index]['user_profile'],
-                          userName:  CoursesJson[index]['user_name'],
-                          price:  CoursesJson[index]['price'],
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                // Replace 'YourDestinationScreen' with the actual screen you want to navigate to
+                                return LectureScreen('Flutter');
+                              },
+                            ),
+                          );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10),
+                          child: CourseCard(thumbNail: CoursesJson[index]['image'],
+                            videoAmount: CoursesJson[index]['video'],
+                            title:  CoursesJson[index]['title'],
+                            userProfile:  CoursesJson[index]['user_profile'],
+                            userName:  CoursesJson[index]['user_name'],
+                            price:  CoursesJson[index]['price'],
+                          ),
                         ),
                       );
                     })
                 ),
               ),
             ),
-
+            SizedBox(height: 25,),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.start,
+            //   children: [
+            //     Padding(
+            //       padding: const EdgeInsets.only(left: 25),
+            //       child: Text("Subject-wise Classes", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+            //     ),
+            //   ],
+            // ),
+            // SizedBox(height: 20,),
+            // Container(
+            //   width: 360,
+            //   height: 400,
+            //    decoration: BoxDecoration(
+            //     color: Colors.white,
+            //     borderRadius: BorderRadius.circular(20),
+            //   ),
+            //   child: Column(
+            //     children: [
+            //       Row(
+            //         children: [
+            //           Text("Physics", style: TextStyle(color: Colors.black, fontSize: 18),),
+            //           Icon(Icons.arrow_forward_ios),
+            //         ],
+            //       )
+            //     ],
+            //   ),
+            // )
           ],
         ),
       ),

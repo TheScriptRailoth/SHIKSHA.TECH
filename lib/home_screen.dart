@@ -4,11 +4,9 @@ import 'package:shiksha_tech/account_screen.dart';
 import 'package:shiksha_tech/clipps_screen.dart';
 import 'package:shiksha_tech/lecture_screen.dart';
 import 'package:shiksha_tech/widgets/home_screen_widget.dart';
-
 import 'career_screen.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -35,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
             gap: 8,
             rippleColor: Colors.grey.withOpacity(0.3),
             hoverColor: Colors.grey.withOpacity(0.1),
-            duration: Duration(milliseconds: 150),
+            duration: Duration(milliseconds: 600),
             iconSize: 24,
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
             tabs: [
@@ -48,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
               ),
               GButton(
-                icon: Icons.group, text: "Career",
+                icon: Icons.group, text: "Explore",
                 iconActiveColor: Color(0xFF4E74F9),
                 iconColor: Colors.grey,
                 textColor: Color(0xFF4E74F9),
