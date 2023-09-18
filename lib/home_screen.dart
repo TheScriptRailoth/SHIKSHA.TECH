@@ -16,7 +16,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   Color navBarColor=Colors.white;
-  List<Widget>listOptions=<Widget>[HomeScreenWidget(),CareerScreen(),ClippScreen(),AccountScreen()];
+  List<Widget>listOptions=<Widget>[HomeScreenWidget(),ExplorePage(),ClippScreen(),AccountScreen()];
   @override
   Widget build(BuildContext context) {
     if (_selectedIndex==2) {

@@ -370,7 +370,44 @@ class HomeScreenWidget extends StatelessWidget {
                     );
                   })
               ),
-            )
+            ),
+            SizedBox(height: 25,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 25),
+                  child: Text("Communication Courses", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 90),
+                  child: Text("See All", style: TextStyle(fontSize: 15, color: Color(0xFF4E74F9), fontWeight: FontWeight.bold),),
+                ),
+              ],
+            ),
+            SizedBox(height: 20,),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 25, top:10, bottom: 20),
+                child: Row(
+                    children:
+                    List.generate(CoursesJson.length,(index){
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: CourseCard(thumbNail: CoursesJson[index]['image'],
+                          videoAmount: CoursesJson[index]['video'],
+                          title:  CoursesJson[index]['title'],
+                          userProfile:  CoursesJson[index]['user_profile'],
+                          userName:  CoursesJson[index]['user_name'],
+                          price:  CoursesJson[index]['price'],
+                        ),
+                      );
+                    })
+                ),
+              ),
+            ),
+
           ],
         ),
       ),
