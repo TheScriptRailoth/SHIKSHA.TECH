@@ -1,5 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:shiksha_tech/widgets/course_card.dart';
+import 'package:shiksha_tech/widgets/courses_data.dart';
 import '../lecture_screen.dart';
+import 'category.dart';
+import 'category_button.dart';
 class HomeScreenWidget extends StatelessWidget {
   const HomeScreenWidget({super.key});
 
@@ -285,8 +291,86 @@ class HomeScreenWidget extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 20,)
-
+            SizedBox(height: 20,),
+            Container(
+              height: 180,
+              width: 340,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(20)),
+                color: Colors.black, // Replace with your desired background color
+              ),
+              child: const DecoratedBox(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    image: DecorationImage(
+                      fit: BoxFit.fill,
+                      image: AssetImage('assets/chandrayan.png'),
+                    )
+                ),
+              ),
+            ),
+            SizedBox(height: 25,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 25),
+                  child: Text("Featured Courses", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 150),
+                  child: Text("See All", style: TextStyle(fontSize: 15, color: Color(0xFF4E74F9), fontWeight: FontWeight.bold),),
+                ),
+              ],
+            ),
+            SizedBox(height: 20,),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 25, top:10, bottom: 20),
+                child: Row(
+                  children:
+                    List.generate(CoursesJson.length,(index){
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: CourseCard(thumbNail: CoursesJson[index]['image'],
+                            videoAmount: CoursesJson[index]['video'],
+                            title:  CoursesJson[index]['title'],
+                            userProfile:  CoursesJson[index]['user_profile'],
+                            userName:  CoursesJson[index]['user_name'],
+                            price:  CoursesJson[index]['price'],
+                        ),
+                      );
+                    })
+                ),
+              ),
+            ),
+            SizedBox(height: 20,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 25),
+                  child: Text("Categories", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 200),
+                  child: Text("See All", style: TextStyle(fontSize: 15, color: Color(0xFF4E74F9), fontWeight: FontWeight.bold),),
+                ),
+              ],
+            ),
+            SizedBox(height: 20,),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children:List.generate(CategoryItem.length,(index){
+                    return Padding(
+                        padding: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
+                      child: CategoryButton(title: CategoryItem[index]['title'],),
+                    );
+                  })
+              ),
+            )
           ],
         ),
       ),
