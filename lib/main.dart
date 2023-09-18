@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shiksha_tech/clipps_screen.dart';
+import 'package:shiksha_tech/community_page.dart';
 import 'package:shiksha_tech/home_screen.dart';
 import 'package:shiksha_tech/lecture_screen.dart';
 

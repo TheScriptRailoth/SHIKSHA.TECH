@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shiksha_tech/community_page.dart';
 import 'package:shiksha_tech/widgets/course_card.dart';
 import 'package:shiksha_tech/widgets/courses_data.dart';
 import 'package:shiksha_tech/widgets/place_holder.dart';
@@ -53,44 +54,63 @@ class HomeScreenWidget extends StatelessWidget {
           icon: Icon(Icons.notifications_active_sharp),
           onPressed: (){},
           ),
+          IconButton(onPressed: (){
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return CommunityScreen();
+                },
+              ),
+            );
+            }, icon: Icon(Icons.message))
         ]
       ),
       drawer: Drawer(
         child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
+          children: [
+            UserAccountsDrawerHeader(
+              accountName: Text("SHIKSHA.TECH"),
+              accountEmail: Text("email@shiksha.tech"),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage('assets/profile_pic.png')
+              ),
               decoration: BoxDecoration(
-                color:Color(0xFF4E74F9),
+                color: Color(0xFF4E74F9),
+                // image: DecorationImage(
+                //   image: NetworkImage(
+                //     "https://appmaking.co/wp-content/uploads/2021/08/android-drawer-bg.jpeg",
+                //   ),
+                //   fit: BoxFit.fill,
+                // ),
               ),
-              child: Text(
-                'Sample',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
+              otherAccountsPictures: [],
             ),
             ListTile(
               leading: Icon(Icons.home),
-              title: Text('Home'),
-              onTap: () {
-                // Handle the Home menu item
-                Navigator.pop(context); // Close the drawer
-              },
+              title: Text("Home"),
+              onTap: () {},
             ),
             ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Settings'),
-              onTap: () {
-                // Handle the Settings menu item
-                Navigator.pop(context); // Close the drawer
-              },
+              leading: Icon(Icons.people),
+              title: Text("Community"),
+              onTap: () {},
             ),
-            // Add more ListTile widgets for other menu items
+            ListTile(
+              leading: Icon(Icons.account_box),
+              title: Text("About Us"),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: Icon(Icons.contact_mail),
+              title: Text("Contact US"),
+              onTap: () {},
+            )
           ],
         ),
       ),
+
+
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
@@ -422,12 +442,12 @@ class HomeScreenWidget extends StatelessWidget {
                         },
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
-                          child: CourseCard(thumbNail: CoursesJson[index]['image'],
-                            videoAmount: CoursesJson[index]['video'],
-                            title:  CoursesJson[index]['title'],
-                            userProfile:  CoursesJson[index]['user_profile'],
-                            userName:  CoursesJson[index]['user_name'],
-                            price:  CoursesJson[index]['price'],
+                          child: CourseCard(thumbNail: CoursesJson2[index]['image'],
+                            videoAmount: CoursesJson2[index]['video'],
+                            title:  CoursesJson2[index]['title'],
+                            userProfile:  CoursesJson2[index]['user_profile'],
+                            userName:  CoursesJson2[index]['user_name'],
+                            price:  CoursesJson2[index]['price'],
                           ),
                         ),
                       );

@@ -34,7 +34,7 @@ class AccountScreen extends StatelessWidget {
                       decoration: BoxDecoration(borderRadius: BorderRadius.circular(100), color: Color(0xFF4E74F9)),
                       child: const Icon(
                         Icons.edit,
-                        color: Colors.black,
+                        color: Colors.white,
                         size: 20,
                       ),
                     ),
@@ -52,7 +52,7 @@ class AccountScreen extends StatelessWidget {
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF4E74F9), side: BorderSide.none, shape: const StadiumBorder()),
-                  child: const Text("Edit Profile", style: TextStyle(color: Colors.black)),
+                  child: const Text("Edit Profile", style: TextStyle(color: Colors.white)),
                 ),
               ),
               const SizedBox(height: 30),
