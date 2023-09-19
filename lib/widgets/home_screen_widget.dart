@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:share/share.dart';
 import 'package:shiksha_tech/community_page.dart';
 import 'package:shiksha_tech/widgets/course_card.dart';
 import 'package:shiksha_tech/widgets/courses_data.dart';
@@ -94,6 +95,11 @@ class HomeScreenWidget extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.people),
               title: Text("Community"),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: Icon(Icons.private_connectivity),
+              title: Text("Parent's Section"),
               onTap: () {},
             ),
             ListTile(

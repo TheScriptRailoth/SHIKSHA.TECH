@@ -4,17 +4,14 @@ class LikeIcon extends StatelessWidget {
   Future<int> tempFuture() async {
     return Future.delayed(Duration(seconds: 1));
   }
-
+   bool liked=false;
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: FutureBuilder(
-        future: tempFuture(),
-        builder: (context, snapshot) =>
-        snapshot.connectionState != ConnectionState.done
-            ? Icon(Icons.favorite, size: 110)
-            : SizedBox(),
-      ),
+      child: IconButton(onPressed: (){
+        liked=true;
+      },icon: liked==false?Icon(Icons.favorite_border_outlined):Icon(Icons.favorite, color: Colors.red,)
+    )
     );
   }
 }
