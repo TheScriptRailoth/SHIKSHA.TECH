@@ -7,7 +7,6 @@ class OptionsScreen extends StatefulWidget {
   @override
   State<OptionsScreen> createState() => _OptionsScreenState();
 }
-
 class _OptionsScreenState extends State<OptionsScreen> {
   bool liked=false;
   bool follow=false;
@@ -64,6 +63,7 @@ class _OptionsScreenState extends State<OptionsScreen> {
                       Icon(
                         Icons.music_note,
                         size: 15,
+                        color: Colors.white,
                       ),
                       Text('Original Audio - some music track--', style: TextStyle(color: Colors.white),),
                     ],
@@ -79,23 +79,26 @@ class _OptionsScreenState extends State<OptionsScreen> {
                   });
                   },
                     child: liked == false
-                        ? Icon(Icons.favorite_border_outlined)
+                        ? Icon(Icons.favorite_border_outlined, color: Colors.white,)
                         : Icon(Icons.favorite, color: Colors.red),
                   ),
-                  Text('59k'),
+                  Text('59k', style: TextStyle(color: Colors.white),),
                   SizedBox(height: 20),
-                  IconButton(onPressed: (){},
-                      icon: Icon(Icons.comment)),
-                  Text('1223'),
+                  GestureDetector(
+                    onTap: (){},
+                    child:Icon(Icons.comment, color: Colors.white,)
+                  ),
+                  Text('1223', style: TextStyle(color: Colors.white),),
                   SizedBox(height: 25),
                   Transform(
                     transform: Matrix4.rotationZ(5.8),
                     child: IconButton(onPressed: (){
-                      Share.share('Check!');
-                    }, icon: Icon(Icons.send_rounded)),
+                      Share.share('xyz');
+                    }, icon: Icon(Icons.send_rounded, color: Colors.white,)),
                   ),
                   SizedBox(height: 50),
-                  Icon(Icons.more_vert),
+                  Icon(Icons.more_vert, color: Colors.white,),
+                  SizedBox(height: 30,)
                 ],
               )
             ],

@@ -24,10 +24,12 @@ class ClippScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Container(
+          height: MediaQuery.sizeOf(context).height,
+          width: MediaQuery.sizeOf(context).width,
           child: Stack(
             children: [
-              //We need swiper for every content
               Swiper(
+
                 itemBuilder: (BuildContext context, int index) {
                   return ContentScreen(
                     src: videos[index],
@@ -37,7 +39,7 @@ class ClippScreen extends StatelessWidget {
                 scrollDirection: Axis.vertical,
               ),
               Padding(
-                padding: const EdgeInsets.all(10),
+                 padding: const EdgeInsets.all(10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

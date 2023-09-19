@@ -11,7 +11,6 @@ import 'category.dart';
 import 'category_button.dart';
 class HomeScreenWidget extends StatelessWidget {
   const HomeScreenWidget({super.key});
-
   @override
   Widget build(BuildContext context) {
     List categories=[
@@ -115,8 +114,6 @@ class HomeScreenWidget extends StatelessWidget {
           ],
         ),
       ),
-
-
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(

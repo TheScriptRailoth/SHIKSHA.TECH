@@ -50,6 +50,30 @@ class _ContentScreenState extends State<ContentScreen> {
         _chewieController != null &&
             _chewieController!.videoPlayerController.value.isInitialized
             ? GestureDetector(
+                 onTap: () {
+                  if (_chewieController != null &&
+                      _chewieController!.videoPlayerController != null &&
+                      _chewieController!
+                          .videoPlayerController!.value.isInitialized) {
+                    if (_chewieController!
+                        .videoPlayerController!.value.isPlaying) {
+                      _chewieController!.videoPlayerController!.pause();
+                    } else {
+                      _chewieController!.videoPlayerController!.play();
+                    }
+                  }
+                  Center(
+                      child: AnimatedOpacity(
+                      opacity: _chewieController!.videoPlayerController!.value.isPlaying ? 0.0 : 1.0,
+                      duration: Duration(milliseconds: 300),
+                   child: Icon(
+                   Icons.play_arrow_rounded,
+                   size: 56,
+                   color: Colors.white,
+                   ),
+                   ),
+                  );
+                },
           onDoubleTap: () {
             setState(() {
               _liked = !_liked;
