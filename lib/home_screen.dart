@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:shiksha_tech/account_screen.dart';
 import 'package:shiksha_tech/clipps_screen.dart';
+import 'package:shiksha_tech/message_page.dart';
 import 'package:shiksha_tech/lecture_screen.dart';
 import 'package:shiksha_tech/widgets/home_screen_widget.dart';
 import 'career_screen.dart';
+import 'community_screen.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
   @override
@@ -14,7 +16,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   Color navBarColor=Colors.white;
-  List<Widget>listOptions=<Widget>[HomeScreenWidget(),ExplorePage(),ClippScreen(),AccountScreen()];
+  List<Widget>listOptions=<Widget>[HomeScreenWidget(),ExplorePage(),ClippScreen(),CommunityScreen(),AccountScreen()];
   @override
   Widget build(BuildContext context) {
     if (_selectedIndex==2) {
@@ -61,6 +63,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 backgroundColor: Colors.blueAccent.withOpacity(0.2),
                 padding: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
 
+              ),
+              GButton(
+                icon: Icons.people_alt_outlined, text: "Community",
+                iconActiveColor: Color(0xFF4E74F9),
+                iconColor: Colors.grey,
+                textColor: Color(0xFF4E74F9),
+                backgroundColor: Colors.blueAccent.withOpacity(0.2),
+                padding: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
               ),
               GButton(
                 icon: Icons.person, text: "Account",

@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:share/share.dart';
-import 'package:shiksha_tech/community_page.dart';
+import 'package:shiksha_tech/message_page.dart';
 import 'package:shiksha_tech/widgets/course_card.dart';
 import 'package:shiksha_tech/widgets/courses_data.dart';
 import 'package:shiksha_tech/widgets/place_holder.dart';
@@ -59,7 +59,7 @@ class HomeScreenWidget extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) {
-                  return CommunityScreen();
+                  return MessageScreen();
                 },
               ),
             );
@@ -93,7 +93,7 @@ class HomeScreenWidget extends StatelessWidget {
             ),
             ListTile(
               leading: Icon(Icons.people),
-              title: Text("Community"),
+              title: Text("My Schemes"),
               onTap: () {},
             ),
             ListTile(
@@ -110,7 +110,7 @@ class HomeScreenWidget extends StatelessWidget {
               leading: Icon(Icons.contact_mail),
               title: Text("Contact US"),
               onTap: () {},
-            )
+            ),
           ],
         ),
       ),
@@ -227,65 +227,79 @@ class HomeScreenWidget extends StatelessWidget {
                   const SizedBox(width: 20,),
                   Column(
                     children: [
-                      CircleAvatar(
-                        radius: 28,
-                        backgroundImage: AssetImage('assets/Flutter.png'),
+
+                      Container(
+                        height: 45,
+                        width: 45,
+                        child: Image(
+                            image:AssetImage('assets/categories.png'),
+                        ),
                       ),
+
+                      // CircleAvatar(
+                      //   radius: 28,
+                      //   backgroundImage: AssetImage('assets/Flutter.png'),
+                      // ),
                       SizedBox(height: 4,),
-                      Text('Classes', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12 ),)
+                      Text('Category', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12 ),)
                     ],
                   ),
                   const SizedBox(width: 20,),
                   Column(
                     children: [
-                      CircleAvatar(
-                        radius: 28,
-                        backgroundImage: AssetImage('assets/Flutter.png'),
-                      ),
+                      Icon(Icons.class_, color: Color(0xFF4E74F9), size: 45,),
+                      // CircleAvatar(
+                      //   radius: 28,
+                      //   backgroundImage: AssetImage('assets/Flutter.png'),
+                      // ),
                       SizedBox(height: 4,),
-                      Text('Design',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12 ),)
+                      Text('Class',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12 ),)
                     ],
                   ),
                   const SizedBox(width: 20,),
                   Column(
                     children: [
-                      CircleAvatar(
-                        radius: 28,
-                        backgroundImage: AssetImage('assets/Flutter.png'),
-                      ),
+                      Icon(Icons.category, color:Color(0xFF4E74F9), size: 45 ,),
+                      // CircleAvatar(
+                      //   radius: 28,
+                      //   backgroundImage: AssetImage('assets/Flutter.png'),
+                      // ),
                       SizedBox(height: 4,),
-                      Text('Communication',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12 ),)
+                      Text('Categories',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12 ),)
                     ],
                   ),
                   const SizedBox(width: 20,),
                   Column(
                     children: [
-                      CircleAvatar(
-                        radius: 28,
-                        backgroundImage: AssetImage('assets/Flutter.png'),
-                      ),
+                      // CircleAvatar(
+                      //   radius: 28,
+                      //   backgroundImage: AssetImage('assets/Flutter.png'),
+                      // ),
+                      Icon(Icons.video_library, color: Color(0xFF4E74F9), size: 45,),
                       SizedBox(height: 4,),
-                      Text('KIDS',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12 ),)
+                      Text('Live Lectures',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12 ),)
                     ],
                   ),
                   const SizedBox(width: 20,),
                   Column(
                     children: [
-                      CircleAvatar(
-                        radius: 28,
-                        backgroundImage: AssetImage('assets/Flutter.png'),
-                      ),
+                      // CircleAvatar(
+                      //   radius: 28,
+                      //   backgroundImage: AssetImage('assets/Flutter.png'),
+                      // ),
+                      Icon(Icons.assignment, color: Color(0xFF4E74F9), size: 45,),
                       SizedBox(height: 4,),
-                      Text('Classes',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12 ),)
+                      Text('Assignment',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12 ),)
                     ],
                   ),
                   const SizedBox(width: 20,),
                   Column(
                     children: const [
-                      CircleAvatar(
-                        radius: 28,
-                        backgroundImage: AssetImage('assets/Flutter.png'),
-                      ),
+                      // CircleAvatar(
+                      //   radius: 28,
+                      //   backgroundImage: AssetImage('assets/Flutter.png'),
+                      // ),
+                      Icon(Icons.emoji_events, color: Color(0xFF4E74F9), size: 45,),
                       SizedBox(height: 4,),
                       Text('Classes',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12 ),)
                     ],
@@ -293,23 +307,25 @@ class HomeScreenWidget extends StatelessWidget {
                   const SizedBox(width: 20,),
                   Column(
                     children: [
-                      CircleAvatar(
-                        radius: 28,
-                        backgroundImage: AssetImage('assets/Flutter.png'),
-                      ),
+                      Icon(Icons.people, color: Color(0xFF4E74F9), size: 45,),
+                      // CircleAvatar(
+                      //   radius: 28,
+                      //   backgroundImage: AssetImage('assets/Flutter.png'),
+                      // ),
                       SizedBox(height: 4,),
-                      Text('Classes',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12 ),)
+                      Text('Community',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12 ),)
                     ],
                   ),
                   const SizedBox(width: 20,),
                   Column(
                     children: [
-                      CircleAvatar(
-                        radius: 28,
-                        backgroundImage: AssetImage('assets/Flutter.png'),
-                      ),
+                      // CircleAvatar(
+                      //   radius: 28,
+                      //   backgroundImage: AssetImage('assets/Flutter.png'),
+                      // ),
+                      Icon(Icons.note_alt_sharp, color: Color(0xFF4E74F9), size: 45,),
                       SizedBox(height: 4,),
-                      Text('Classes',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12 ),)
+                      Text('Material',style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12 ),)
                     ],
                   ),
                   const SizedBox(width: 20,),
