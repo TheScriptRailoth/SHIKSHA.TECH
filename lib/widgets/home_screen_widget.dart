@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:share/share.dart';
 import 'package:shiksha_tech/message_page.dart';
+import 'package:shiksha_tech/my_schemes_screen.dart';
 import 'package:shiksha_tech/widgets/course_card.dart';
 import 'package:shiksha_tech/widgets/courses_data.dart';
 import 'package:shiksha_tech/widgets/place_holder.dart';
@@ -94,7 +95,16 @@ class HomeScreenWidget extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.people),
               title: Text("My Schemes"),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return MySchemesScreen();
+                    },
+                  ),
+                );
+              },
             ),
             ListTile(
               leading: Icon(Icons.private_connectivity),
@@ -378,7 +388,6 @@ class HomeScreenWidget extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (context) {
-                                // Replace 'YourDestinationScreen' with the actual screen you want to navigate to
                                 return LectureScreen('Flutter');
                               },
                             ),
