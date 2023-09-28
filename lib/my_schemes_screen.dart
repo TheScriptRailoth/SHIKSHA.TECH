@@ -7,10 +7,7 @@ class MySchemesScreen extends StatefulWidget {
   State<MySchemesScreen> createState() => _MySchemesScreenState();
 }
 class _MySchemesScreenState extends State<MySchemesScreen> {
-  final Map<String, String> headers = {
-    'X-APISETU-CLIENTID': clientId,
-    'X-APISETU-APIKEY': apiKey,
-  };
+
   String stringResponse="";
   Future apicall() async{
     http.Response response;
