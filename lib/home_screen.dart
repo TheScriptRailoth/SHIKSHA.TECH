@@ -40,7 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
             tabs: [
               GButton(
-                icon: Icons.home, text: "Home",
+                icon: Icons.home,
+                text: "Home",
                 iconActiveColor: Color(0xFF4E74F9),
                 iconColor: Colors.grey,
                 textColor: Color(0xFF4E74F9),

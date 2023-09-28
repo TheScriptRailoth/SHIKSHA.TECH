@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shiksha_tech/widgets/add_question_widget.dart';
+import 'package:shiksha_tech/widgets/community_ask_widget.dart';
 import 'package:shiksha_tech/widgets/community_post_widget.dart';
 
 import 'add_post_or_ask_screen.dart';
@@ -24,6 +26,10 @@ class _CommunityScreenState extends State<CommunityScreen> {
         title: Text("Community", style: TextStyle(color: Colors.black)),
         elevation: 0.0,
         actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search, color: Color(0xFF4E74F9)),
+            onPressed: () {},
+          ),
           IconButton(
             icon: Icon(Icons.add_circle_outline, color: Color(0xFF4E74F9)),
             onPressed: () {
@@ -145,31 +151,6 @@ class _CommunityScreenState extends State<CommunityScreen> {
                             width: 1,
                             height: 30,
                           ),
-                          Expanded(
-                            child: Material(
-                              elevation: 0,
-                              borderRadius: BorderRadius.circular(30),
-                              color: Colors.white,
-                              child: TextButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => AddPostorAsk(),
-                                    ),
-                                  );
-                                },
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.post_add, color: Color(0xFF4E74F9),),
-                                    SizedBox(width: 10),
-                                    Text("Post", style: TextStyle(color: Color(0xFF4E74F9)),),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
                         ],
                       ),
                     ],
@@ -184,9 +165,16 @@ class _CommunityScreenState extends State<CommunityScreen> {
                 child: Column(
                   children: [
                     CommunityPost(),
-                    CommunityPost(),
-                    CommunityPost(),
-                    CommunityPost(),
+                  ],
+                ),
+              ),
+            ),
+          if(selectAns)
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    CommunityAsk()
                   ],
                 ),
               ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shiksha_tech/base_client.dart';
 import 'package:shiksha_tech/clipps_screen.dart';
 import 'package:shiksha_tech/message_page.dart';
 import 'package:shiksha_tech/home_screen.dart';
