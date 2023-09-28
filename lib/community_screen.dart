@@ -59,7 +59,16 @@ class _CommunityScreenState extends State<CommunityScreen> {
                       Row(
                         children: [
                           SizedBox(width: 8),
-                          CircleAvatar(backgroundColor: Colors.yellow),
+                          Container(
+                            height: 35,
+                            width: 35,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(12.0),
+                              child: Image.asset('images/me.jpg',
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                          ),
                           SizedBox(width: 8),
                           Flexible(
                             child: Container(
@@ -164,6 +173,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
+                    CommunityPost(),
                     CommunityPost(),
                   ],
                 ),
