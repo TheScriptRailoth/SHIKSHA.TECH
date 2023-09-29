@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  flutter_pdfview: ^1.2.7
   flutter_rating_bar: ^4.0.0
   share: ^2.0.4
   flutter_form_builder: ^9.1.1
@@ -37,6 +38,7 @@ dependencies:
   video_player: ^2.3.0
   google_nav_bar: ^5.0.6
   http: ^0.13.3
+  url_launcher: ^6.0.0
   flutter:
     sdk: flutter
 

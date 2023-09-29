@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:share/share.dart';
 import 'package:shiksha_tech/message_page.dart';
 import 'package:shiksha_tech/my_schemes_screen.dart';
+import 'package:shiksha_tech/study_material.dart';
 import 'package:shiksha_tech/widgets/course_card.dart';
 import 'package:shiksha_tech/widgets/courses_data.dart';
 import 'package:shiksha_tech/widgets/place_holder.dart';
@@ -102,6 +103,20 @@ class HomeScreenWidget extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) {
                       return MySchemesScreen();
+                    },
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.note_alt_sharp),
+              title: Text("Notes"),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return TopicListPage();
                     },
                   ),
                 );
