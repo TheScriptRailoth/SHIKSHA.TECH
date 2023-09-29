@@ -7,6 +7,7 @@ import 'package:shiksha_tech/my_schemes_screen.dart';
 import 'package:shiksha_tech/widgets/course_card.dart';
 import 'package:shiksha_tech/widgets/courses_data.dart';
 import 'package:shiksha_tech/widgets/place_holder.dart';
+import 'package:shiksha_tech/widgets/seach_screen_widget.dart';
 import '../lecture_screen.dart';
 import 'category.dart';
 import 'category_button.dart';
@@ -158,71 +159,71 @@ class HomeScreenWidget extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 30,),
-                    Container(
-                      width: 350,
-                      height: 50,
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.all(5.0),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15.0)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            height: 40.0,
-                            width: 40.0,
-                            alignment: Alignment.center,
-                            child: Container(
-                              child: Icon(Icons.search),
+                    GestureDetector(
+                      onTap: (){
+                        _navigateToSearchPage(context);
+                      },
+                      child: Container(
+                        width: 350,
+                        height: 50,
+                        alignment: Alignment.center,
+                        padding: const EdgeInsets.all(5.0),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(15.0)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: 40.0,
+                              width: 40.0,
+                              alignment: Alignment.center,
+                              child: Container(
+                                child: Icon(Icons.search),
+                              ),
                             ),
-                          ),
-                          Flexible(
-                            child: Container(
-                              width: 250,
-                              height: 38,
-                              alignment: Alignment.topCenter,
-                              child: Padding(
-                                padding: const EdgeInsets.only(bottom: 4),
-                                child: TextField(
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(fontSize: 15),
-                                  cursorColor: Colors.black,
-                                  decoration: InputDecoration(
-                                    hintText: "Type Something....",
-                                    hintStyle: TextStyle(
-                                      fontSize: 15,
-                                      color: Colors.grey,
-                                    ),
-                                    border: InputBorder.none,
+                            Flexible(
+                              child: Container(
+                                width: 250,
+                                height: 38,
+                                alignment: Alignment.topCenter,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(bottom: 4, top: 10, right: 100),
+                                  child: Text(
+                                    textAlign: TextAlign.left,
+                                      "Search for new Courses",
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        color: Colors.grey,
+                                      ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                          SizedBox(width: 10.0),
-                          Container(
-                            height: 40.0,
-                            width: 40.0,
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              color: Color(0xFF4E74F9).withOpacity(0.7),
-                              borderRadius: BorderRadius.circular(10.0),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0xFF4E74F9).withOpacity(0.5),
-                                  spreadRadius: 0.0,
-                                  blurRadius: 6.0,
-                                  offset: Offset(0, 2),
-                                )
-                              ],
+                            SizedBox(width: 10.0),
+                            Container(
+                              height: 40.0,
+                              width: 40.0,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                color: Color(0xFF4E74F9).withOpacity(0.7),
+                                borderRadius: BorderRadius.circular(10.0),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color(0xFF4E74F9).withOpacity(0.5),
+                                    spreadRadius: 0.0,
+                                    blurRadius: 6.0,
+                                    offset: Offset(0, 2),
+                                  )
+                                ],
+                              ),
+                              child: Container(
+                                  child: Icon(Icons.filter_alt)
+                              ),
                             ),
-                            child: Container(
-                                child: Icon(Icons.filter_alt)
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                  ]
@@ -384,14 +385,14 @@ class HomeScreenWidget extends StatelessWidget {
                     List.generate(CoursesJson.length,(index){
                       return GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return LectureScreen('Flutter');
-                              },
-                            ),
-                          );
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) {
+                          //       return LectureScreen('Flutter');
+                          //     },
+                          //   ),
+                          // );
                         },
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
@@ -458,15 +459,15 @@ class HomeScreenWidget extends StatelessWidget {
                     List.generate(CoursesJson.length,(index){
                       return GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) {
-                                // Replace 'YourDestinationScreen' with the actual screen you want to navigate to
-                                return LectureScreen('Flutter');
-                              },
-                            ),
-                          );
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) {
+                          //       // Replace 'YourDestinationScreen' with the actual screen you want to navigate to
+                          //       return LectureScreen('Flutter');
+                          //     },
+                          //   ),
+                          // );
                         },
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
@@ -514,6 +515,28 @@ class HomeScreenWidget extends StatelessWidget {
             // )
           ],
         ),
+      ),
+    );
+  }
+  void _navigateToSearchPage(BuildContext context) {
+    Navigator.of(context).push(
+      PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) {
+          return SearchScreen(title: '');
+        },
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          const begin = Offset(0.0, 1.0); // Start the animation from bottom
+          const end = Offset.zero;
+          const curve = Curves.easeInOut;
+
+          var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+          var offsetAnimation = animation.drive(tween);
+
+          return SlideTransition(
+            position: offsetAnimation,
+            child: child,
+          );
+        },
       ),
     );
   }

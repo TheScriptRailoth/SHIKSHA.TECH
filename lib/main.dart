@@ -4,7 +4,10 @@ import 'package:shiksha_tech/message_page.dart';
 import 'package:shiksha_tech/home_screen.dart';
 import 'package:shiksha_tech/lecture_screen.dart';
 import 'package:shiksha_tech/my_schemes_screen.dart';
+import 'package:shiksha_tech/testing.dart';
 import 'package:shiksha_tech/widgets/add_question_widget.dart';
+import 'package:shiksha_tech/widgets/seach_screen_widget.dart';
+import 'package:shiksha_tech/widgets/search_course_card.dart';
 
 void main() {
   runApp(const MyApp());
