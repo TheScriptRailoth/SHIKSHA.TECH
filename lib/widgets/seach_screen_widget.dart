@@ -155,14 +155,11 @@ class _SearchScreen extends State<SearchScreen> {
                                   // }
 
                                   Future<void> fetchData() async {
-                                    final url1 = Uri.parse(
-                                        'https://149f-49-43-41.3.ngrok-free.app/predict?title=' +
-                                            searchValue);
+                                    final url1 = Uri.parse('https://149f-49-43-41.3.ngrok-free.app/predict?title=' +searchValue);
                                     final url2 = Uri.parse(
                                         'https://149f-49-43-41.3.ngrok-free.app/predictImg?title=' +
-                                            searchValue); // Replace with the actual URL for the second API
-                                    //final url3 = Uri.parse('https://bbe5-49-43-41-199.ngrok-free.app/predictRating?title='+searchValue); // Replace with the actual URL for the second API
-
+                                            searchValue);
+                                    //final url3 = Uri.parse('https://bbe5-49-43-41-199.ngrok-free.app/predictRating?title='+searchValue);
                                     final response1 = await http.get(url1);
                                     final response2 = await http.get(url2);
                                     //final response3 = await http.get(url3);
