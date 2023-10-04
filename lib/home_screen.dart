@@ -1,12 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:shiksha_tech/account_screen.dart';
 import 'package:shiksha_tech/clipps_screen.dart';
 import 'package:shiksha_tech/message_page.dart';
 import 'package:shiksha_tech/lecture_screen.dart';
+import 'package:shiksha_tech/widgets/custom_icons.dart';
 import 'package:shiksha_tech/widgets/home_screen_widget.dart';
 import 'career_screen.dart';
 import 'community_screen.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
   @override
@@ -40,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
             tabs: [
               GButton(
-                icon: Icons.home,
+                icon: CupertinoIcons.house_alt_fill,
                 text: "Home",
                 iconActiveColor: Color(0xFF4E74F9),
                 iconColor: Colors.grey,
@@ -49,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
               ),
               GButton(
-                icon: Icons.group, text: "Explore",
+                icon: CupertinoIcons.paperplane_fill, text: "Explore",
                 iconActiveColor: Color(0xFF4E74F9),
                 iconColor: Colors.grey,
                 textColor: Color(0xFF4E74F9),
@@ -74,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
               ),
               GButton(
-                icon: Icons.person, text: "Account",
+                icon: CupertinoIcons.person, text: "Account",
                 iconActiveColor: Color(0xFF4E74F9),
                 iconColor: Colors.grey,
                 textColor: Color(0xFF4E74F9),

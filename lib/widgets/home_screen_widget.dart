@@ -1,21 +1,40 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
+import 'package:hidden_drawer_menu/model/item_hidden_menu.dart';
+import 'package:hidden_drawer_menu/model/screen_hidden_drawer.dart';
 import 'package:share/share.dart';
+import 'package:shiksha_tech/home_screen.dart';
 import 'package:shiksha_tech/message_page.dart';
 import 'package:shiksha_tech/my_schemes_screen.dart';
 import 'package:shiksha_tech/widgets/course_card.dart';
 import 'package:shiksha_tech/widgets/courses_data.dart';
 import 'package:shiksha_tech/widgets/place_holder.dart';
+import 'package:shiksha_tech/widgets/profilemenu_widget.dart';
 import 'package:shiksha_tech/widgets/seach_screen_widget.dart';
 import '../lecture_screen.dart';
 import 'category.dart';
 import 'category_button.dart';
-class HomeScreenWidget extends StatelessWidget {
+class HomeScreenWidget extends StatefulWidget {
   const HomeScreenWidget({super.key});
+
   @override
+  State<HomeScreenWidget> createState() => _HomeScreenWidgetState();
+}
+
+class _HomeScreenWidgetState extends State<HomeScreenWidget> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final hoverColor = Colors.white70;
+  @override
   Widget build(BuildContext context) {
+    List<ScreenHiddenDrawer> _pages = [];
+
+    final myTextStyle = TextStyle(
+      fontWeight: FontWeight.bold,
+      fontSize: 18,
+      color: Colors.white,
+    );
     List categories=[
       "Category",
       "Classes",
@@ -48,26 +67,47 @@ class HomeScreenWidget extends StatelessWidget {
       'Flutter'
     ];
     return Scaffold(
+      key: _scaffoldKey,
       backgroundColor: Colors.grey.withOpacity(0.1),
       appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Color(0xFF4E74F9),
-        actions: <Widget>[
-          IconButton(
-          icon: Icon(Icons.notifications_active_sharp),
-          onPressed: (){},
+          leading: IconButton(
+            onPressed: (){
+              _scaffoldKey.currentState?.openDrawer();
+            },
+            icon: Container(
+              height: 32,
+              width: 32,
+              child: Image.asset('icons/menu.png'),
+            ),
           ),
-          IconButton(onPressed: (){
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return MessageScreen();
-                },
+          toolbarHeight: kToolbarHeight,
+          elevation: 0,
+          backgroundColor: Color(0xFF4E74F9),
+          actions: <Widget>[
+            IconButton(
+              icon: Container(
+                  height:20,
+                  width: 20,
+                  child: Image.asset('icons/bell.png')),
+              onPressed: (){},
+            ),
+            IconButton(onPressed: (){
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return MessageScreen();
+                  },
+                ),
+              );
+            },
+              icon: Container(
+                  height: 24,
+                  width: 24,
+                  child: Image.asset('icons/chat.png')
               ),
-            );
-            }, icon: Icon(Icons.message))
-        ]
+            )
+          ]
       ),
       drawer: Drawer(
         child: Material(
@@ -336,89 +376,89 @@ class HomeScreenWidget extends StatelessWidget {
                   ),
                 ),
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(padding: EdgeInsets.only(left: 7, top: 20),
-                      child: Text("Hi, Ashutosh", style: TextStyle(
-                        color:Colors.white,fontSize: 24, fontWeight: FontWeight.w600,letterSpacing: 1,wordSpacing: 2,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(padding: EdgeInsets.only(left: 7, top: 20),
+                        child: Text("Hi, Ashutosh", style: TextStyle(
+                          color:Colors.white,fontSize: 24, fontWeight: FontWeight.w600,letterSpacing: 1,wordSpacing: 2,
+                        ),
+                        ),
                       ),
+                      Padding(padding: EdgeInsets.only(left: 7),
+                        child: Text("Let's Start Our Learning", style: TextStyle(
+                          color:Colors.white,fontSize: 15, fontWeight: FontWeight.w600,letterSpacing: 1,wordSpacing: 2,
+                        ),
+                        ),
                       ),
-                    ),
-                    Padding(padding: EdgeInsets.only(left: 7),
-                      child: Text("Let's Start Our Learning", style: TextStyle(
-                        color:Colors.white,fontSize: 15, fontWeight: FontWeight.w600,letterSpacing: 1,wordSpacing: 2,
-                      ),
-                      ),
-                    ),
-                    SizedBox(height: 30,),
-                    GestureDetector(
-                      onTap: (){
-                        _navigateToSearchPage(context);
-                      },
-                      child: Container(
-                        width: 350,
-                        height: 50,
-                        alignment: Alignment.center,
-                        padding: const EdgeInsets.all(5.0),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(15.0)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              height: 40.0,
-                              width: 40.0,
-                              alignment: Alignment.center,
-                              child: Container(
-                                child: Icon(Icons.search),
+                      SizedBox(height: 30,),
+                      GestureDetector(
+                        onTap: (){
+                          _navigateToSearchPage(context);
+                        },
+                        child: Container(
+                          width: 350,
+                          height: 50,
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.all(5.0),
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(15.0)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                height: 40.0,
+                                width: 40.0,
+                                alignment: Alignment.center,
+                                child: Container(
+                                  child: Icon(Icons.search),
+                                ),
                               ),
-                            ),
-                            Flexible(
-                              child: Container(
-                                width: 250,
-                                height: 38,
-                                alignment: Alignment.topCenter,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(bottom: 4, top: 10, right: 100),
-                                  child: Text(
-                                    textAlign: TextAlign.left,
+                              Flexible(
+                                child: Container(
+                                  width: 250,
+                                  height: 38,
+                                  alignment: Alignment.topCenter,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(bottom: 4, top: 10, right: 100),
+                                    child: Text(
+                                      textAlign: TextAlign.left,
                                       "Search for new Courses",
                                       style: TextStyle(
                                         fontSize: 15,
                                         color: Colors.grey,
                                       ),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            SizedBox(width: 10.0),
-                            Container(
-                              height: 40.0,
-                              width: 40.0,
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                color: Color(0xFF4E74F9).withOpacity(0.7),
-                                borderRadius: BorderRadius.circular(10.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Color(0xFF4E74F9).withOpacity(0.5),
-                                    spreadRadius: 0.0,
-                                    blurRadius: 6.0,
-                                    offset: Offset(0, 2),
-                                  )
-                                ],
+                              SizedBox(width: 10.0),
+                              Container(
+                                height: 40.0,
+                                width: 40.0,
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFF4E74F9).withOpacity(0.7),
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Color(0xFF4E74F9).withOpacity(0.5),
+                                      spreadRadius: 0.0,
+                                      blurRadius: 6.0,
+                                      offset: Offset(0, 2),
+                                    )
+                                  ],
+                                ),
+                                child: Container(
+                                    child: Icon(Icons.filter_alt, color: Colors.white,)
+                                ),
                               ),
-                              child: Container(
-                                  child: Icon(Icons.filter_alt)
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                 ]
+                    ]
                 ),
               ],
             ),
@@ -435,7 +475,7 @@ class HomeScreenWidget extends StatelessWidget {
                         height: 45,
                         width: 45,
                         child: Image(
-                            image:AssetImage('assets/categories.png'),
+                          image:AssetImage('assets/categories.png'),
                         ),
                       ),
 
@@ -573,7 +613,7 @@ class HomeScreenWidget extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(left: 25, top:10, bottom: 20),
                 child: Row(
-                  children:
+                    children:
                     List.generate(CoursesJson.length,(index){
                       return GestureDetector(
                         onTap: () {
@@ -589,11 +629,11 @@ class HomeScreenWidget extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: CourseCard(thumbNail: CoursesJson[index]['image'],
-                              videoAmount: CoursesJson[index]['video'],
-                              title:  CoursesJson[index]['title'],
-                              userProfile:  CoursesJson[index]['user_profile'],
-                              userName:  CoursesJson[index]['user_name'],
-                              price:  CoursesJson[index]['price'],
+                            videoAmount: CoursesJson[index]['video'],
+                            title:  CoursesJson[index]['title'],
+                            userProfile:  CoursesJson[index]['user_profile'],
+                            userName:  CoursesJson[index]['user_name'],
+                            price:  CoursesJson[index]['price'],
                           ),
                         ),
                       );
@@ -619,9 +659,9 @@ class HomeScreenWidget extends StatelessWidget {
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
-                children:List.generate(CategoryItem.length,(index){
+                  children:List.generate(CategoryItem.length,(index){
                     return Padding(
-                        padding: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
+                      padding: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
                       child: CategoryButton(title: CategoryItem[index]['title'],),
                     );
                   })
