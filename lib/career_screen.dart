@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:shiksha_tech/widgets/category.dart';
 import 'package:shiksha_tech/widgets/place_holder.dart';
 
+import 'insternship_search.dart';
+
 class ExplorePage extends StatefulWidget {
   const ExplorePage({Key? key}) : super(key: key);
 
@@ -63,72 +65,82 @@ class _ExplorePageState extends State<ExplorePage> {
         ],
       ),
           SizedBox(height: spacer),
-          Container(
-            width: 350,
-            height: 50,
-            alignment: Alignment.center,
-            padding: const EdgeInsets.all(5.0),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(15.0)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  height: 40.0,
-                  width: 40.0,
-                  alignment: Alignment.center,
-                  child: Container(
-                    child: Icon(Icons.search),
+          GestureDetector(
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) {
+                return SearchInternScreen();
+              }
+              )
+          );
+        },
+            child: Container(
+              width: 350,
+              height: 50,
+              alignment: Alignment.center,
+              padding: const EdgeInsets.all(5.0),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15.0)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 40.0,
+                    width: 40.0,
+                    alignment: Alignment.center,
+                    child: Container(
+                      child: Icon(Icons.search),
+                    ),
                   ),
-                ),
-                Flexible(
-                  child: Container(
-                    width: 250,
-                    height: 38,
-                    alignment: Alignment.topCenter,
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 4),
-                      child: TextField(
-                        textAlign: TextAlign.left,
-                        style: TextStyle(fontSize: 15),
-                        cursorColor: Colors.black,
-                        decoration: InputDecoration(
-                          hintText: "Type Something....",
-                          hintStyle: TextStyle(
-                            fontSize: 15,
-                            color: Colors.grey,
+                  Flexible(
+                    child: Container(
+                      width: 250,
+                      height: 38,
+                      alignment: Alignment.topCenter,
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 4),
+                        child: TextField(
+                          textAlign: TextAlign.left,
+                          style: TextStyle(fontSize: 15),
+                          cursorColor: Colors.black,
+                          decoration: InputDecoration(
+                            hintText: "Type Something....",
+                            hintStyle: TextStyle(
+                              fontSize: 15,
+                              color: Colors.grey,
+                            ),
+                            border: InputBorder.none,
                           ),
-                          border: InputBorder.none,
                         ),
                       ),
                     ),
                   ),
-                ),
-                SizedBox(width: 10.0),
-                Container(
-                  height: 40.0,
-                  width: 40.0,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: Color(0xFF4E74F9).withOpacity(0.7),
-                    borderRadius: BorderRadius.circular(10.0),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0xFF4E74F9).withOpacity(0.5),
-                        spreadRadius: 0.0,
-                        blurRadius: 6.0,
-                        offset: Offset(0, 2),
-                      )
-                    ],
+                  SizedBox(width: 10.0),
+                  Container(
+                    height: 40.0,
+                    width: 40.0,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Color(0xFF4E74F9).withOpacity(0.7),
+                      borderRadius: BorderRadius.circular(10.0),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color(0xFF4E74F9).withOpacity(0.5),
+                          spreadRadius: 0.0,
+                          blurRadius: 6.0,
+                          offset: Offset(0, 2),
+                        )
+                      ],
+                    ),
+                    child: Container(
+                        child: Icon(Icons.filter_alt)
+                    ),
                   ),
-                  child: Container(
-                      child: Icon(Icons.filter_alt)
-                  ),
-                ),
-              ],
-            ),
+                ],
+              ),
+            )
           ),
           SizedBox(height: spacer),
 
