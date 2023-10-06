@@ -1,67 +1,53 @@
 import 'package:flutter/material.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:chewie/chewie.dart';
+import 'package:video_player/video_player.dart';
 
-class YoutubePlayerCustomSubtitle extends StatefulWidget {
-  final String videoId = 'https://www.youtube.com/watch?v=r9eGi0rVxBw&list=RDMM&index=27';
-  const YoutubePlayerCustomSubtitle({super.key});
+class VideoPlayerThumbnail extends StatefulWidget {
+  final String videoUrl;
+  final String thumbnailUrl;
+
+  VideoPlayerThumbnail({required this.videoUrl, required this.thumbnailUrl});
 
   @override
-  State<YoutubePlayerCustomSubtitle> createState() =>
-      _YoutubePlayerCustomSubtitleState();
+  _VideoPlayerThumbnailState createState() => _VideoPlayerThumbnailState();
 }
 
-class _YoutubePlayerCustomSubtitleState
-    extends State<YoutubePlayerCustomSubtitle> {
-  late YoutubePlayerController _controller;
-
-  // For Custom Subtitle and Subtitle displayin duration
-  List<Subtitle> subtitle = [
-    Subtitle(start: 2, end: 10, text: "Animated Contatiner Widget in Flutter"),
-    // subtitle start at 2 second and end at 10 second
-    Subtitle(start: 10, end: 20, text: "You can add your custom subtitle"),
-    Subtitle(start: 20, end: 100, text: ""),
-    // add mor subtitle as your requirement
-  ];
-  String subtitleText = "";
+class _VideoPlayerThumbnailState extends State<VideoPlayerThumbnail> {
+  late ChewieController _chewieController;
 
   @override
   void initState() {
     super.initState();
-    _controller = YoutubePlayerController(
-        initialVideoId: widget.videoId,
-        flags: const YoutubePlayerFlags(autoPlay: true, mute: false))
-      ..addListener(_onPlayerStateChange);
+    final videoPlayerController = VideoPlayerController.network(widget.videoUrl);
 
+    _chewieController = ChewieController(
+      videoPlayerController: videoPlayerController,
+      aspectRatio: 16 / 9, // Adjust as needed
+      autoPlay: false, // Set to true if you want autoplay
+      looping: false, // Set to true if you want looping
+      // Add more options as needed
+    );
   }
 
-  void _onPlayerStateChange() {
-    if (_controller.value.playerState == PlayerState.playing) {
-      final currentTime = _controller.value.position.inSeconds;
-      final currentSubtitle = subtitle.firstWhere((subtitle) =>
-      currentTime >= subtitle.start && currentTime <= subtitle.end);
-
-      // Update the UI with the current subtitle
-      setState(() {
-        subtitleText = currentSubtitle.text;
-      });
-    }
-  }
-
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Testing"),
-      ),
-      body: Stack(
-        children: [
-          YoutubePlayer(controller: _controller),
-          Padding(
-            padding: const EdgeInsets.only(left: 8.0, top: 190),
-            child: Text(
-              subtitleText,
-              style: const TextStyle(fontSize: 17, color: Colors.white),
-            ),
-          )
+    return GestureDetector(
+      onTap: () {
+        _chewieController.enterFullScreen();
+        _chewieController.play();
+      },
+      child: Stack(
+        alignment: Alignment.center,
+        children: <Widget>[
+          // Thumbnail image
+          Image.network(
+            widget.thumbnailUrl,
+            fit: BoxFit.cover,
+          ),
+          // Chewie video player
+          Chewie(
+            controller: _chewieController,
+          ),
         ],
       ),
     );
@@ -69,15 +55,7 @@ class _YoutubePlayerCustomSubtitleState
 
   @override
   void dispose() {
-    _controller.dispose();
     super.dispose();
+    _chewieController.dispose();
   }
-}
-
-class Subtitle {
-  final int start;
-  final int end;
-  final String text;
-
-  Subtitle({required this.start, required this.end, required this.text});
 }

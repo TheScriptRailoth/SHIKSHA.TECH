@@ -13,6 +13,7 @@ class SearchCourseCard extends StatefulWidget {
     required this.userProfile,
     required this.userName,
     required this.rating,
+    required this.searchValue,
   }) : super(key: key);
 
   final String thumbNail;
@@ -21,6 +22,7 @@ class SearchCourseCard extends StatefulWidget {
   final String userProfile;
   final String userName;
   final String rating;
+  final String searchValue;
 
   @override
   _SearchCourseCardState createState() => _SearchCourseCardState();
@@ -41,6 +43,7 @@ class _SearchCourseCardState extends State<SearchCourseCard> {
                   return LectureScreen(
                     title:widget.title,
                     thumbnail: widget.thumbNail,
+                    searchvalue: widget.searchValue,
                   );
               }));
             },

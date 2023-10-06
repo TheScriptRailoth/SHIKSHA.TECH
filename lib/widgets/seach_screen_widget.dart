@@ -17,6 +17,7 @@ class _SearchScreen extends State<SearchScreen> {
   bool isLoading = false;
   bool serverOffline=false;
   bool userOffline=false;
+  String s='';
   final TextEditingController _searchController = TextEditingController();
 
   @override
@@ -234,6 +235,7 @@ class _SearchScreen extends State<SearchScreen> {
                                       // }
 
                                       fetchData();
+                                      s=searchValue;
                                     },
                                   ),
                               ),
@@ -297,6 +299,7 @@ class _SearchScreen extends State<SearchScreen> {
           userProfile: '',
           userName: '',
           rating:'',
+          searchValue: s,
         );
       },
     );
