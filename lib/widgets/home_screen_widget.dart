@@ -5,6 +5,7 @@ import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:hidden_drawer_menu/model/item_hidden_menu.dart';
 import 'package:hidden_drawer_menu/model/screen_hidden_drawer.dart';
 import 'package:share/share.dart';
+import 'package:shiksha_tech/article_page.dart';
 import 'package:shiksha_tech/home_screen.dart';
 import 'package:shiksha_tech/message_page.dart';
 import 'package:shiksha_tech/my_schemes_screen.dart';
@@ -576,20 +577,27 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
               ),
             ),
             SizedBox(height: 20,),
-            Container(
-              height: 180,
-              width: 340,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(20)),
-                color: Colors.black, // Replace with your desired background color
-              ),
-              child: const DecoratedBox(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: AssetImage('assets/chandrayan.png'),
-                    )
+            GestureDetector(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context){
+                  return ArticlePage();
+                }));
+              },
+              child: Container(
+                height: 180,
+                width: 340,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                  color: Colors.black, // Replace with your desired background color
+                ),
+                child: const DecoratedBox(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: AssetImage('assets/chandrayan.png'),
+                      )
+                  ),
                 ),
               ),
             ),
