@@ -15,6 +15,8 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreen extends State<SearchScreen> {
   List<Course> searchResults = [];
   bool isLoading = false;
+  bool serverOffline=false;
+  bool userOffline=false;
   final TextEditingController _searchController = TextEditingController();
 
   @override
@@ -108,11 +110,13 @@ class _SearchScreen extends State<SearchScreen> {
                                       Future<void> fetchData() async {
 
                                         setState(() {
-                                          isLoading = true; // Set loading state to true
+                                          serverOffline=false;
+                                          isLoading = true;
+                                          userOffline=false;
                                         });
 
-                                        final url1 = Uri.parse('https://7245-49-43-42-71.ngrok-free.app/predict?title=' + searchValue);
-                                        final url2 = Uri.parse('https://7245-49-43-42-71.ngrok-free.app/predictImg?title=' + searchValue);
+                                        final url1 = Uri.parse('https://385a-49-43-41-194.ngrok-free.app/predict?title=' + searchValue);
+                                        final url2 = Uri.parse('https://385a-49-43-41-194.ngrok-free.app/predictImg?title=' + searchValue);
 
                                         try {
                                           final response1 = await http.get(url1);
@@ -145,19 +149,18 @@ class _SearchScreen extends State<SearchScreen> {
                                                 }
                                               }
                                             });
-                                          } else {
-                                            Center(
-                                              child: Container(
-                                                height: 40,
-                                                width: 40,
-                                                child: Image.asset('icons/offline.png'),
-                                              ),
-                                            );
-                                            print(
-                                                'Request failed with status: ${response1.statusCode} or ${response2.statusCode}');
+                                          }else if (response1.statusCode == 404 && response2.statusCode == 404) {
+                                            print('Request failed with status: ${response1.statusCode} or ${response2.statusCode}');
+                                            // Set the serverOffline flag to true
+                                            setState(() {
+                                              isLoading = false;
+                                              serverOffline = true;
+                                            });
                                           }
+
                                         } catch (error) {
                                           print('An error occurred: $error');
+                                          userOffline=true;
                                         } finally {
                                           setState(() {
                                             isLoading = false; // Set loading state to false after data is fetched or on error
@@ -231,22 +234,12 @@ class _SearchScreen extends State<SearchScreen> {
                                       // }
 
                                       fetchData();
-                                      //Navigator.push(
-                                      // context,
-                                      //MaterialPageRoute(
-                                      //builder: (context) {
-                                      // Replace 'YourDestinationScreen' with the actual screen you want to navigate to
-                                      //return SearchScreen('Flutter');
-                                      // },
-                                      // ),
-                                      //);
                                     },
                                   ),
                               ),
                             ),
                           ],
-
-                    ),
+                        ),
                   ),
                 ),
               ]),
@@ -256,11 +249,38 @@ class _SearchScreen extends State<SearchScreen> {
           Expanded(
             child: isLoading
                 ? Center(child: CircularProgressIndicator())
+                : serverOffline
+                ? Center(child:
+                    Column(
+                      children: [
+                        SizedBox(height: MediaQuery.of(context).size.height*.2,),
+                        Container(
+                          height: 100,
+                            width: 100,
+                            child: Image.asset('icons/offline.png')
+                        ),
+                        SizedBox(height: 10,),
+                        Text('Server is offline. Please try again later.'),
+                      ],
+                    )
+                  )
+                :userOffline
+                ?Center(child:
+            Column(
+              children: [
+                SizedBox(height: MediaQuery.of(context).size.height*.2,),
+                Container(
+                    height: 100,
+                    width: 100,
+                    child: Image.asset('icons/offline.png')
+                ),
+                SizedBox(height: 10,),
+                Text('You are offline. Please try again later.'),
+              ],
+            )
+            )
                 : buildSearchResults(),
           ),
-
-          // if (searchResults.isNotEmpty)
-          //     buildSearchResults(),
         ],
       ),
     );

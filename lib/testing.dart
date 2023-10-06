@@ -1,142 +1,83 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class testing extends StatefulWidget {
+class YoutubePlayerCustomSubtitle extends StatefulWidget {
+  final String videoId = 'https://www.youtube.com/watch?v=r9eGi0rVxBw&list=RDMM&index=27';
+  const YoutubePlayerCustomSubtitle({super.key});
+
   @override
-  _testing createState() => _testing();
+  State<YoutubePlayerCustomSubtitle> createState() =>
+      _YoutubePlayerCustomSubtitleState();
 }
 
-class _testing extends State<testing> {
-  List<Course> searchResults = [];
-  bool isLoading = false;
-  final TextEditingController _searchController = TextEditingController();
+class _YoutubePlayerCustomSubtitleState
+    extends State<YoutubePlayerCustomSubtitle> {
+  late YoutubePlayerController _controller;
+
+  // For Custom Subtitle and Subtitle displayin duration
+  List<Subtitle> subtitle = [
+    Subtitle(start: 2, end: 10, text: "Animated Contatiner Widget in Flutter"),
+    // subtitle start at 2 second and end at 10 second
+    Subtitle(start: 10, end: 20, text: "You can add your custom subtitle"),
+    Subtitle(start: 20, end: 100, text: ""),
+    // add mor subtitle as your requirement
+  ];
+  String subtitleText = "";
 
   @override
+  void initState() {
+    super.initState();
+    _controller = YoutubePlayerController(
+        initialVideoId: widget.videoId,
+        flags: const YoutubePlayerFlags(autoPlay: true, mute: false))
+      ..addListener(_onPlayerStateChange);
+
+  }
+
+  void _onPlayerStateChange() {
+    if (_controller.value.playerState == PlayerState.playing) {
+      final currentTime = _controller.value.position.inSeconds;
+      final currentSubtitle = subtitle.firstWhere((subtitle) =>
+      currentTime >= subtitle.start && currentTime <= subtitle.end);
+
+      // Update the UI with the current subtitle
+      setState(() {
+        subtitleText = currentSubtitle.text;
+      });
+    }
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Search Internships'),
+        title: const Text("Testing"),
       ),
-      body: Column(
+      body: Stack(
         children: [
+          YoutubePlayer(controller: _controller),
           Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TextField(
-              controller: _searchController,
-              decoration: InputDecoration(
-                hintText: 'Enter your search query',
-                suffixIcon: IconButton(
-                  icon: Icon(Icons.search),
-                  onPressed: () {
-                    fetchData();
-                  },
-                ),
-              ),
+            padding: const EdgeInsets.only(left: 8.0, top: 190),
+            child: Text(
+              subtitleText,
+              style: const TextStyle(fontSize: 17, color: Colors.white),
             ),
-          ),
-          Expanded(
-            child: isLoading
-                ? Center(child: CircularProgressIndicator())
-                : buildSearchResults(),
-          ),
+          )
         ],
       ),
     );
   }
 
-  Widget buildSearchResults() {
-    if (searchResults.isEmpty) {
-      return Center(child: Text('No results found.'));
-    }
-
-    return ListView.builder(
-      itemCount: searchResults.length,
-      itemBuilder: (context, index) {
-        final course = searchResults[index];
-        return ListTile(
-          title: Text(course.title),
-          subtitle: Text(course.companyName),
-          trailing: Text(course.location),
-          // You can display other course details here
-        );
-      },
-    );
-  }
-
-  Future<void> fetchData() async {
-    setState(() {
-      isLoading = true;
-    });
-
-    final searchValue = _searchController.text;
-    final urlMap = {
-      'title': Uri.parse('https://7245-49-43-42-71.ngrok-free.app/intern?domain='+searchValue),
-      'companyName': Uri.parse('https://7245-49-43-42-71.ngrok-free.app/internCompany?domain='+searchValue),
-      // 'location': Uri.parse('https://7245-49-43-42-71.ngrok-free.app/internlocation?domain='+searchValue),
-      // 'stipend': Uri.parse('https://7245-49-43-42-71.ngrok-free.app/internstipend?domain='+searchValue),
-      // 'startDate': Uri.parse('https://7245-49-43-42-71.ngrok-free.app/internstartDate?domain='+searchValue),
-      'duration': Uri.parse('https://7245-49-43-42-71.ngrok-free.app/internDuration?domain='+searchValue),
-    };
-
-    try {
-      final List<Future<http.Response>> requests = urlMap.values.map((url) => http.get(url)).toList();
-      final List<http.Response> responses = await Future.wait(requests);
-
-      if (responses.every((response) => response.statusCode == 200)) {
-        final responseBodies = responses.map((response) => response.body).toList();
-
-        for (int i = 0; i < responseBodies.length; i++) {
-          final paramName = urlMap.keys.elementAt(i);
-          final responseBody = responseBodies[i];
-          final dataList = json.decode(responseBody) as List<dynamic>;
-
-          for (final data in dataList) {
-            final title = data['title'] as String;
-            final companyName = data['companyName'] as String;
-            final location = data['location'] as String;
-            final stipend = data['stipend'] as String;
-            final startDate = data['startDate'] as String;
-            final duration = data['duration'] as String;
-
-            searchResults.add(Course(
-              title: title,
-              companyName: companyName,
-              location: location,
-              stipend: stipend,
-              startDate: startDate,
-              duration: duration,
-            ));
-          }
-        }
-      } else {
-        // Handle HTTP error statuses
-        print('Request failed with status codes: ${responses.map((response) => response.statusCode)}');
-      }
-    } catch (error) {
-      print('An error occurred: $error');
-    } finally {
-      setState(() {
-        isLoading = false;
-      });
-    }
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 }
 
-class Course {
-  final String title;
-  final String companyName;
-  final String location;
-  final String stipend;
-  final String startDate;
-  final String duration;
+class Subtitle {
+  final int start;
+  final int end;
+  final String text;
 
-  Course({
-    required this.title,
-    required this.companyName,
-    required this.location,
-    required this.stipend,
-    required this.startDate,
-    required this.duration,
-  });
+  Subtitle({required this.start, required this.end, required this.text});
 }

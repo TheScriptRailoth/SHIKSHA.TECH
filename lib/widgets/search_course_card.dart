@@ -1,6 +1,8 @@
+import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:shiksha_tech/lecture_screen.dart';
+import 'package:video_player/video_player.dart';
 
 class SearchCourseCard extends StatefulWidget {
   const SearchCourseCard({
@@ -25,6 +27,7 @@ class SearchCourseCard extends StatefulWidget {
 }
 
 class _SearchCourseCardState extends State<SearchCourseCard> {
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -35,7 +38,10 @@ class _SearchCourseCardState extends State<SearchCourseCard> {
           child: GestureDetector(
             onTap: (){
               Navigator.push(context, MaterialPageRoute(builder: (context){
-                  return LectureScreen('Flutter');
+                  return LectureScreen(
+                    title:widget.title,
+                    thumbnail: widget.thumbNail,
+                  );
               }));
             },
             child: Container(

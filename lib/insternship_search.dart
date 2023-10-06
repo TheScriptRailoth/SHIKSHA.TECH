@@ -113,8 +113,8 @@ class _SearchInternScreen extends State<SearchInternScreen> {
                                         isLoading = true; // Set loading state to true
                                       });
 
-                                      final url1=Uri.parse('https://7245-49-43-42-71.ngrok-free.app/intern?domain=' + searchValue);
-                                      final url2=Uri.parse('https://7245-49-43-42-71.ngrok-free.app/internCompany?domain=' + searchValue);   try {
+                                      final url1=Uri.parse('https://385a-49-43-41-194.ngrok-free.app/intern?domain=' + searchValue);
+                                      final url2=Uri.parse('https://385a-49-43-41-194.ngrok-free.app/internCompany?domain=' + searchValue);   try {
                                         final response1 = await http.get(url1);
                                         final response2 = await http.get(url2);
 

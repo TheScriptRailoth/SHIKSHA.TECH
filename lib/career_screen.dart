@@ -2,9 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shiksha_tech/widgets/category.dart';
 import 'package:shiksha_tech/widgets/place_holder.dart';
-
 import 'insternship_search.dart';
-
 class ExplorePage extends StatefulWidget {
   const ExplorePage({Key? key}) : super(key: key);
 
@@ -254,10 +252,7 @@ class _ExplorePageState extends State<ExplorePage> {
               return Padding(
                 padding: const EdgeInsets.only(bottom: 10),
                 child: GestureDetector(
-                  onTap: () {
-
-                  },
-
+                  onTap: () {},
                   child:PlaceHolder(
                     title: data['title'],
                   ),
