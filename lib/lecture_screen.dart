@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:chewie/chewie.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:video_player/video_player.dart';
@@ -20,11 +21,12 @@ class LectureScreen extends StatefulWidget {
 }
 
 class _LectureScreenState extends State<LectureScreen> {
-  ChewieController? _chewieController = null;
+  ChewieController? _chewieController;
   List<String> searchResults = [];
   int selectedVideoIndex = 0;
   late VideoPlayerController _videoPlayerController;
   bool isLoading = false;
+
   Future<void> fetchData() async {
     final url1 = Uri.parse('https://385a-49-43-41-194.ngrok-free.app/course?title=' + widget.title);
 
@@ -54,6 +56,21 @@ class _LectureScreenState extends State<LectureScreen> {
     }
   }
 
+  void _initializeVideoPlayer() {
+    _videoPlayerController = VideoPlayerController.network(
+      '',
+    )..initialize().then((_) {
+      setState(() {
+        // Initialize Chewie with the video player controller, but don't auto-play.
+        _chewieController = ChewieController(
+          videoPlayerController: _videoPlayerController,
+          autoPlay: false,
+          looping: false,
+        );
+      });
+    });
+  }
+
   void _playVideo(String videoUrl, int index) {
     if (_videoPlayerController.value.isInitialized) {
       _videoPlayerController.dispose();
@@ -61,11 +78,12 @@ class _LectureScreenState extends State<LectureScreen> {
     setState(() {
       isLoading = true;
     });
+
     _videoPlayerController = VideoPlayerController.network(videoUrl)
       ..initialize().then((_) {
         setState(() {
           selectedVideoIndex = index;
-          isLoading=false;
+          isLoading = false;
         });
 
         _chewieController = ChewieController(
@@ -82,26 +100,8 @@ class _LectureScreenState extends State<LectureScreen> {
   void initState() {
     super.initState();
     fetchData();
-    if (searchResults.isNotEmpty) {
-      final initialVideoUrl =
-          'https://2589-49-43-41-194.ngrok-free.app/' +
-              widget.searchvalue +
-              '/' +
-              searchResults[0] +
-              '.mp4';
-      _videoPlayerController = VideoPlayerController.network(initialVideoUrl)
-        ..initialize().then((_) {
-          setState(() {});
-          _chewieController = ChewieController(
-            videoPlayerController: _videoPlayerController,
-            autoPlay: true,
-            looping: false,
-          );
-        });
-    }
+    _initializeVideoPlayer();
   }
-
-
 
   @override
   void dispose() {
@@ -128,34 +128,45 @@ class _LectureScreenState extends State<LectureScreen> {
         child: ListView(
           children: [
             Stack(
-              children:[
+              children: [
                 Container(
-                padding: EdgeInsets.all(1),
-                width: MediaQuery.of(context).size.width,
-                height: 200,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Color(0xFFF5F3FF),
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: AspectRatio(
-                    aspectRatio: 16 / 9,
-                    child: _chewieController != null
-                  ? Chewie(controller: _chewieController!)
-                        : CircularProgressIndicator(),
+                  padding: EdgeInsets.all(1),
+                  width: MediaQuery.of(context).size.width,
+                  height: 200,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Color(0xFFF5F3FF),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: AspectRatio(
+                      aspectRatio: 16 / 9,
+                      child: _chewieController != null
+                          ? Chewie(controller: _chewieController!)
+                          : Stack(
+                        children: [
+                          Image.network(widget.thumbnail),
+                          Align(
+                            alignment: Alignment.center,
+                            child: Icon(
+                              CupertinoIcons.play_circle_fill,
+                              size: 50,
+                              color: Color(0xFF4E74F9),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
-              ),
-                if(isLoading)
+                if (isLoading)
                   Padding(
                     padding: const EdgeInsets.only(top: 80),
                     child: Center(
-                      child:
-                          CircularProgressIndicator(),
+                      child: CircularProgressIndicator(),
                     ),
                   )
-              ]
+              ],
             ),
             SizedBox(height: 15,),
             Text("${widget.title} Complete Course",
