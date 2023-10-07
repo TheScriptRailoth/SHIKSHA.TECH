@@ -28,7 +28,7 @@ class _LectureScreenState extends State<LectureScreen> {
   bool isLoading = false;
 
   Future<void> fetchData() async {
-    final url1 = Uri.parse('https://385a-49-43-41-194.ngrok-free.app/course?title=' + widget.title);
+    final url1 = Uri.parse('https://bef1-49-43-41-194.ngrok-free.app/course?title=' + widget.title);
 
     try {
       final response1 = await http.get(url1);
@@ -199,7 +199,7 @@ class _LectureScreenState extends State<LectureScreen> {
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemBuilder: (context, index) {
-                final videoUrl = 'https://2589-49-43-41-194.ngrok-free.app/' +
+                final videoUrl = 'https://4646-49-43-41-194.ngrok-free.app/' +
                     widget.searchvalue +
                     '/' +
                     searchResults[index] +

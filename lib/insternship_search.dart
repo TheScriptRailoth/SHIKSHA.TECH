@@ -113,8 +113,8 @@ class _SearchInternScreen extends State<SearchInternScreen> {
                                         isLoading = true; // Set loading state to true
                                       });
 
-                                      final url1=Uri.parse('https://385a-49-43-41-194.ngrok-free.app/intern?domain=' + searchValue);
-                                      final url2=Uri.parse('https://385a-49-43-41-194.ngrok-free.app/internCompany?domain=' + searchValue);   try {
+                                      final url1=Uri.parse('https://bef1-49-43-41-194.ngrok-free.app/intern?domain=' + searchValue);
+                                      final url2=Uri.parse('https://bef1-49-43-41-194.ngrok-free.app/internCompany?domain=' + searchValue);   try {
                                         final response1 = await http.get(url1);
                                         final response2 = await http.get(url2);
 
@@ -259,10 +259,6 @@ class _SearchInternScreen extends State<SearchInternScreen> {
     );
   }
   Widget buildSearchResults() {
-    if (searchResults.isEmpty) {
-      // Handle the case when there are no search results.
-      return Center(child: Text('No results found.'));
-    }
     return ListView.builder(
       itemCount: searchResults.length,
       itemBuilder: (context, index) {

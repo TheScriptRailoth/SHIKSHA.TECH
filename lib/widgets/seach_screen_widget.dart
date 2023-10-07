@@ -13,7 +13,7 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreen extends State<SearchScreen> {
-  List<Course> searchResults = [];
+    List<Course> searchResults = [];
   bool isLoading = false;
   bool serverOffline=false;
   bool userOffline=false;
@@ -116,8 +116,8 @@ class _SearchScreen extends State<SearchScreen> {
                                           userOffline=false;
                                         });
 
-                                        final url1 = Uri.parse('https://385a-49-43-41-194.ngrok-free.app/predict?title=' + searchValue);
-                                        final url2 = Uri.parse('https://385a-49-43-41-194.ngrok-free.app/predictImg?title=' + searchValue);
+                                        final url1 = Uri.parse('https://bef1-49-43-41-194.ngrok-free.app/predict?title=' + searchValue);
+                                        final url2 = Uri.parse('https://bef1-49-43-41-194.ngrok-free.app/predictImg?title=' + searchValue);
 
                                         try {
                                           final response1 = await http.get(url1);
