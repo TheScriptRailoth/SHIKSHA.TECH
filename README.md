@@ -15,7 +15,7 @@ SIH 2022 brings the next generation evolution by inclusion of new methodology to
 * Research and development 
 * Access to material resources
 
-**Org:** Government of Kerala
+**Organisation:** Government of Kerala
 
 **Category:** Software
 
