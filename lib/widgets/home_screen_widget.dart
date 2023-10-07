@@ -9,6 +9,7 @@ import 'package:shiksha_tech/article_page.dart';
 import 'package:shiksha_tech/home_screen.dart';
 import 'package:shiksha_tech/message_page.dart';
 import 'package:shiksha_tech/my_schemes_screen.dart';
+import 'package:shiksha_tech/notes_screen.dart';
 import 'package:shiksha_tech/widgets/course_card.dart';
 import 'package:shiksha_tech/widgets/courses_data.dart';
 import 'package:shiksha_tech/widgets/place_holder.dart';
@@ -126,10 +127,13 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                         CircleAvatar(
                           backgroundColor: Colors.white,
                           radius: 30,
-                          child: Image.asset(
-                            'assets/profile_image.png', // Replace with your image asset path
-                            width: 80,
-                            height: 80,
+                          child: ClipOval(
+                            child: Image.asset(
+                              'images/me.jpg',
+                              width: 60,
+                              height: 60,
+                              fit: BoxFit.contain,
+                            ),
                           ),
                         ),
                         SizedBox(width: 8),
@@ -216,9 +220,9 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                 ),
                 hoverColor: hoverColor,
                 onTap: () {
-                  // Handle navigation to the Home screen
-                  Navigator.pop(context); // Close the drawer
-                  // Add your navigation logic here
+                  Navigator.push(context, MaterialPageRoute(builder: (context){
+                    return NotesScreen();
+                  }));
                 },
                 contentPadding: EdgeInsets.symmetric(horizontal: 25),
               ),
