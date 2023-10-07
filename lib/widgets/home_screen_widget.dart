@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -142,10 +143,10 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                           children: [
                             Text(
                               'Shiksha.Tech',
-                              style: TextStyle(fontSize: 18, color: Colors.white),
+                              style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
                             ),
                             Text(
-                              'shiksha.tech@example.com',
+                              'shiksha.techgmail.com',
                               style: TextStyle(fontSize: 14, color: Colors.white),
                             ),
                           ],
@@ -153,14 +154,15 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                       ],
                     ),
                     IconButton(
-                      icon: Icon(
-                        Icons.chat,
-                        color: Colors.white,
-                        size: 24,
+                      icon: Container(
+                          child: Image.asset('icons/chat.png'),
+                          height: 22,
+                          width: 22,
                       ),
                       onPressed: () {
-                        // Handle chat option
-                        // Add your chat logic here
+                        Navigator.push(context, MaterialPageRoute(builder: (context){
+                          return MessageScreen();
+                        }));
                       },
                     ),
                   ],
@@ -169,7 +171,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
               SizedBox(height: 16),
               ListTile(
                 leading: Icon(
-                  Icons.home,
+                  CupertinoIcons.house_alt_fill,
                   color: Colors.white,
                   size: 24,
                 ),
@@ -189,20 +191,20 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
 
               ListTile(
                 leading: Icon(
-                  Icons.format_list_bulleted,
+                  CupertinoIcons.square_list_fill,
                   color: Colors.white,
                   size: 24,
                 ),
                 title: Text(
                   'My Schemes',
                   style: TextStyle(color: Colors.white, fontSize: 18,),
-
                 ),
                 hoverColor: hoverColor,
                 onTap: () {
-                  // Handle navigation to the Home screen
-                  Navigator.pop(context); // Close the drawer
-                  // Add your navigation logic here
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MySchemesScreen()),
+                  );
                 },
                 contentPadding: EdgeInsets.symmetric(horizontal: 25),
               ),
@@ -272,7 +274,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
 
               ListTile(
                 leading: Icon(
-                  Icons.contact_phone,
+                  CupertinoIcons.phone_fill,
                   color: Colors.white,
                   size: 24,
                 ),
@@ -355,7 +357,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                 padding: EdgeInsets.all(16),
                 child: Text(
                   'Shiksha.Tech',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                 ),
               ),
             ],
