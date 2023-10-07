@@ -1,5 +1,5 @@
 # Smart India Hackathon 2023
-SIH 2022 brings the next generation evolution by inclusion of new methodology to inculcate the culture of startup and innovation ecosystem across different age groups.
+SIH 2023 brings the next generation evolution by inclusion of new methodology to inculcate the culture of startup and innovation ecosystem across different age groups.
 
 # Problem Statement
 **PSID:** SIH3126
@@ -22,9 +22,9 @@ SIH 2022 brings the next generation evolution by inclusion of new methodology to
 **Domain Bucket:** Smart Education
 
 # Research
-- Data: rural education statistics to be uploaded in order to showcase research and understanding of the PS.
+- Data: Rural education statistics to be uploaded in order to showcase research and understanding of the PS.
 - Ideating and innovating solutions for favorable results.
-- Usescases
+- Usescases.
 - USP of our solution to our existing technology.
 - Ask mentors for dataset.
 - Try to gain Jury interest. Once understood the problem statement and after countless meetings, discussions and brainstorming sessions, we came up with an approach to provide children with quality and advantageous learning platform.
@@ -40,10 +40,15 @@ SIH 2022 brings the next generation evolution by inclusion of new methodology to
 # Solution
 ## Key Features
 
+### AI/ML powered Individually monitoring System
+
+- Every student of shiksha.tech is being individually monitored in different parameters.
+- Parameters involve their interests, search history, most viewed courses and study materials, liked short clipps, watch time, time spent on a particular course, etc with the help of **AI/ML**.
+  
 ### Skill Monitoring
 
 - Keep track of progress and skill development through an AI-powered monitoring system.
-- Receive real-time feedback and personalized recommendations.
+- Receive real-time feedback and **personalized recommendations**.
 
 ### Online Learning
 
@@ -54,12 +59,17 @@ SIH 2022 brings the next generation evolution by inclusion of new methodology to
 ### Community Engagement
 
 - Foster a strong sense of community through discussion forums and chat rooms.
-- Encourage interaction, collaboration, and knowledge sharing among learners.
+- Encourage interaction, collaboration, and knowledge and researches sharing among learners.
 - Embrace diversity to enrich discussions and broaden horizons.
+
+### Short Informative Clips
+
+- Engage with bite-sized, informative videos covering a wide array of topics like current affairs, latest technology, government policies and internships, etc.
+- Make learning accessible and engaging, even in limited time frames.
 
 ### Financial Support
 
-- Stay informed about grants, loans, and incentives for education and entrepreneurship.
+- Stay informed about **grants, loans, and incentives** for education and entrepreneurship.
 - Empower users with access to financial opportunities that can transform their lives.
 
 ### Employment Opportunities
@@ -72,15 +82,19 @@ SIH 2022 brings the next generation evolution by inclusion of new methodology to
 - Encourage innovation and learning through research projects and experimentation.
 - Share findings, best practices, and educational innovations within the platform.
 
+### Live Streaming
+- Live sessions helps in better understanding.
+- It also enables real-time interaction and engagement regardless of geographical barriers.
+
 ### Material Resources
 
 - Access a rich repository of educational resources, including articles, videos, and more.
 - Democratize access to high-quality learning materials.
 
-### Short Informative Clips
+### Articles
+- Informative Articles to enhance knowledge on current affairs, technology and various essential topics.
+- Interactive and provides precise information.
 
-- Engage with bite-sized, informative videos covering a wide array of topics.
-- Make learning accessible and engaging, even in limited time frames.
 
 ## Technology Stack
 
@@ -104,14 +118,43 @@ SIH 2022 brings the next generation evolution by inclusion of new methodology to
 
 ## Additional Features/Ideas
 
-- Informative Articles to enhance knowledge on current affairs, technology and various essential topics.
--Works efficiently on 6 platforms including Android, IOS, Webapp and others.
+- Works efficiently on 6 platforms including Android, IOS, Webapp and others.
 - A multi-lingual and user-friendly interface guided by a 24/7 AI Chatbot.
 - Internet access with subsidies to offer connectivity to financially disadvantage patrons.
 - Smart Libraries in collaboration with government schools can be used as a common educational space for students to continue learning even in locations with poor internet connectivity.
 - A lighter version of the application for low-end devices.
+- The app includes features for students with disabilities.
+
+# Evaluation Criteria
+
+### Novelty of Idea:
+- Every shiksha.tech student is personally monitored in many criteria using AI/ML and then presented with guided as well as personalized career paths, courses, internships, employment, and many more. The integration of AI-driven personalized learning pathways, community engagement, financial support, and job connections sets it apart.
+
+### Idea Complexity:
+- The complexity of the idea is relatively high, as it addresses multifaceted challenges in rural education. However, the complexity is well-managed through the use of advanced technology and a user-friendly interface.
+
+### Ppt Validation:
+- The presentation of the idea is based on precise and well-researched information. Each component, from AI recommendation to community engagement and financial support, is clearly articulated.
+
+### Idea Feasibility:
+- The feasibility of Shiksha.tech depends on technology infrastructure and partnerships with educational institutions, employers, and government bodies. With the right resources and support, the idea is feasible to implement.
+
+### Idea Practicality:
+- The practicality of the idea is strong, as it leverages existing technology and partnerships to create a platform that addresses real-world problems in rural education.
+
+### Idea Sustainability:
+- Sustainability depends on ongoing support, community engagement, and scalability. If Shiksha.tech can maintain user engagement, partnerships, and adapt to changing needs, it has the potential for long-term sustainability.
+
+### Impact Scale of Idea:
+- The impact scale is significant. Shiksha.tech has the potential to transform education, bridge the digital divide, boost employment opportunities, and drive economic growth in rural areas. Its potential impact on the real world is substantial.
+
+### User Experience:
+- Shiksha.tech prioritizes user experience with a user-friendly interface. It offers a range of features while maintaining simplicity, ensuring it's accessible to users with varying levels of digital literacy.
+
+### Future Work Progression:
+- Future work progression involves refining the business model to ensure sustainability and implementing ideas such as smart libraries, subsidised internet access and others. Revenue streams, partnerships, and scalability will be crucial elements to address in the business model.
 
 # Conclusion
 
-Shiksha.tech is an online learning platform that aims to revolutionize education in rural areas by providing comprehensive support for overall development. The platform offers a wide range of courses, a individually monitoring System that uses AI to create personalized learning pathways, courses and jobs recommendations and a community engagement platform where users can interact, share experiences, and collaborate with fellow learners.
+Shiksha.tech is an online learning platform that aims to revolutionize the education system by providing comprehensive support for overall development. Shiksha.tech aims to unlock the full potential of rural learners, enabling them to confidently pursue their educational and career goals. The platform not only offers a wide range of courses but also an individually monitoring system that uses **AI** to create **personalized learning pathways, courses, and job recommendations, as well as a community engagement platform** where users can interact, share experiences, and collaborate with fellow learners.
 
