@@ -79,22 +79,22 @@ class _OptionsScreenState extends State<OptionsScreen> {
                   });
                   },
                     child: liked == false
-                        ? Icon(Icons.favorite_border_outlined, color: Colors.white,)
+                        ? Icon(Icons.favorite_border_outlined, color: Colors.white,size: 28,)
                         : Icon(Icons.favorite, color: Colors.red),
                   ),
-                  Text('59k', style: TextStyle(color: Colors.white),),
+                  //Text('59k', style: TextStyle(color: Colors.white),),
                   SizedBox(height: 20),
                   GestureDetector(
                     onTap: (){},
-                    child:Icon(Icons.comment, color: Colors.white,)
+                    child:Icon(Icons.comment, color: Colors.white,size: 25,)
                   ),
-                  Text('1223', style: TextStyle(color: Colors.white),),
+                  //Text('1223', style: TextStyle(color: Colors.white),),
                   SizedBox(height: 25),
                   Transform(
                     transform: Matrix4.rotationZ(5.8),
                     child: IconButton(onPressed: (){
                       Share.share('xyz');
-                    }, icon: Icon(Icons.send_rounded, color: Colors.white,)),
+                    }, icon: Icon(Icons.send_rounded, color: Colors.white,size: 25,)),
                   ),
                   SizedBox(height: 50),
                   Icon(Icons.more_vert, color: Colors.white,),

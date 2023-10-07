@@ -17,6 +17,8 @@ class _ContentScreenState extends State<ContentScreen> {
   late VideoPlayerController _videoPlayerController;
   ChewieController? _chewieController;
   bool _liked = false;
+  bool _showControls = false;
+
   @override
   void initState() {
     super.initState();
@@ -31,6 +33,7 @@ class _ContentScreenState extends State<ContentScreen> {
       autoPlay: true,
       showControls: false,
       looping: true,
+      aspectRatio: 9 / 16,
     );
     setState(() {});
   }
@@ -42,6 +45,34 @@ class _ContentScreenState extends State<ContentScreen> {
     super.dispose();
   }
 
+  void toggleControls() {
+    setState(() {
+      _showControls = !_showControls;
+    });
+    if (_showControls) {
+      Future.delayed(Duration(seconds: 3), () {
+        if (mounted) {
+          setState(() {
+            _showControls = false;
+          });
+        }
+      });
+    }
+  }
+
+  void togglePlayPause() {
+    if (_chewieController != null &&
+        _chewieController!.videoPlayerController != null &&
+        _chewieController!.videoPlayerController!.value.isInitialized) {
+      if (_chewieController!.videoPlayerController!.value.isPlaying) {
+        _chewieController!.videoPlayerController!.pause();
+      } else {
+        _chewieController!.videoPlayerController!.play();
+      }
+      toggleControls();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -50,37 +81,15 @@ class _ContentScreenState extends State<ContentScreen> {
         _chewieController != null &&
             _chewieController!.videoPlayerController.value.isInitialized
             ? GestureDetector(
-                 onTap: () {
-                  if (_chewieController != null &&
-                      _chewieController!.videoPlayerController != null &&
-                      _chewieController!
-                          .videoPlayerController!.value.isInitialized) {
-                    if (_chewieController!
-                        .videoPlayerController!.value.isPlaying) {
-                      _chewieController!.videoPlayerController!.pause();
-                    } else {
-                      _chewieController!.videoPlayerController!.play();
-                    }
-                  }
-                  Center(
-                      child: AnimatedOpacity(
-                      opacity: _chewieController!.videoPlayerController!.value.isPlaying ? 0.0 : 1.0,
-                      duration: Duration(milliseconds: 300),
-                   child: Icon(
-                   Icons.play_arrow_rounded,
-                   size: 56,
-                   color: Colors.white,
-                   ),
-                   ),
-                  );
-                },
-          onDoubleTap: () {
-            setState(() {
-              _liked = !_liked;
-            });
-          },
-          child: Chewie(
-            controller: _chewieController!,
+          onTap: togglePlayPause,
+          child: Container(
+            // Use BoxFit.cover to cover the entire screen vertically
+            decoration: BoxDecoration(
+              color: Colors.black,
+            ),
+            child: Chewie(
+              controller: _chewieController!,
+            ),
           ),
         )
             : Column(
@@ -94,6 +103,20 @@ class _ContentScreenState extends State<ContentScreen> {
         if (_liked)
           Center(
             child: LikeIcon(),
+          ),
+        if (_showControls)
+          Center(
+            child: AnimatedOpacity(
+              opacity: _chewieController!.videoPlayerController!.value.isPlaying
+                  ? 0.0
+                  : 1.0,
+              duration: Duration(milliseconds: 1000),
+              child: Icon(
+                Icons.play_arrow_rounded,
+                size: 56,
+                color: Colors.white,
+              ),
+            ),
           ),
         OptionsScreen()
       ],

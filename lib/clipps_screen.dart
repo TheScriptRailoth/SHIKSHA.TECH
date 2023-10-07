@@ -29,7 +29,6 @@ class ClippScreen extends StatelessWidget {
           child: Stack(
             children: [
               Swiper(
-
                 itemBuilder: (BuildContext context, int index) {
                   return ContentScreen(
                     src: videos[index],
@@ -39,14 +38,14 @@ class ClippScreen extends StatelessWidget {
                 scrollDirection: Axis.vertical,
               ),
               Padding(
-                 padding: const EdgeInsets.all(10),
+                 padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 30),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       'Clipps',
                       style: TextStyle(
-                        color: Color(0xFF4E74F9),
+                        color: Colors.white,
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
                       ),
