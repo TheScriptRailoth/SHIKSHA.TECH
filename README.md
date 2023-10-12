@@ -154,6 +154,9 @@ SIH 2023 brings the next generation evolution by inclusion of new methodology to
 ### Future Work Progression:
 - Future work progression involves refining the business model to ensure sustainability and implementing ideas such as smart libraries, subsidised internet access and others. Revenue streams, partnerships, and scalability will be crucial elements to address in the business model.
 
+# ScreenShots
+- G-Drive Link: https://drive.google.com/drive/folders/1keVd4-yBSKIZslyktVXzVLmEUtGWK2b_?usp=sharing
+  
 # Conclusion
 
 Shiksha.tech is an online learning platform that aims to revolutionize the education system by providing comprehensive support for overall development. Shiksha.tech aims to unlock the full potential of rural learners, enabling them to confidently pursue their educational and career goals. The platform not only offers a wide range of courses but also an individually monitoring system that uses **AI** to create **personalized learning pathways, courses, and job recommendations, as well as a community engagement platform** where users can interact, share experiences, and collaborate with fellow learners.
