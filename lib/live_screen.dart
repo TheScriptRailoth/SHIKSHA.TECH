@@ -1,6 +1,7 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
 class LiveScreen extends StatefulWidget {
   const LiveScreen({super.key});
@@ -15,7 +16,7 @@ class _LiveScreenState extends State<LiveScreen> {
   ChewieController? chewieController;
 
   Future<void> loadVideo()async{
-    videoPlayerController=VideoPlayerController.network('https://b3d60035815d.ap-south-1.playback.live-video.net/api/video/v1/ap-south-1.578421575817.channel.JSbdilwhqylC.m3u8');
+    videoPlayerController=VideoPlayerController.network('https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4');
 
     await Future.wait([
       videoPlayerController.initialize()
@@ -23,7 +24,8 @@ class _LiveScreenState extends State<LiveScreen> {
 
     chewieController = ChewieController(videoPlayerController: videoPlayerController,
         autoPlay: true,
-        looping: false,
+        looping: true,
+        isLive: true,
         fullScreenByDefault: true,
         //showControls: true
         // customControls: Column(
@@ -52,11 +54,13 @@ class _LiveScreenState extends State<LiveScreen> {
   @override
   void initState(){
     super.initState();
+    SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
     loadVideo();
   }
 
   @override
   void dispose(){
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     videoPlayerController .dispose();
     chewieController?.dispose();
     super.dispose();
@@ -67,6 +71,31 @@ class _LiveScreenState extends State<LiveScreen> {
     return Scaffold(
       body: Stack(
         children: [
+          Positioned(
+            top: 20,
+            left: 20,
+            child: Container(
+              padding: EdgeInsets.all(10),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.fiber_manual_record,
+                    color: Colors.red,
+                    size: 20,
+                  ),
+                  SizedBox(width: 5),
+                  Text(
+                    "LIVE",
+                    style: TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
           if (chewieController != null)
             Chewie(
               controller: chewieController!,
@@ -76,7 +105,7 @@ class _LiveScreenState extends State<LiveScreen> {
               child: CircularProgressIndicator(),
             ),
           Positioned(
-            top: 10,
+            top: 20,
             left: 20,
             child: Container(
               padding: EdgeInsets.all(10),

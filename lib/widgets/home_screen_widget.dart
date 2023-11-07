@@ -19,6 +19,7 @@ import 'package:shiksha_tech/widgets/seach_screen_widget.dart';
 import '../lecture_screen.dart';
 import 'category.dart';
 import 'category_button.dart';
+import 'live_lecture_card.dart';
 class HomeScreenWidget extends StatefulWidget {
   const HomeScreenWidget({super.key});
 
@@ -656,6 +657,34 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
               ),
             ),
             SizedBox(height: 20,),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 25),
+                  child: Text("Featured Courses", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 150),
+                  child: Text("See All", style: TextStyle(fontSize: 15, color: Color(0xFF4E74F9), fontWeight: FontWeight.bold),),
+                ),
+              ],
+            ),
+            SizedBox(height: 20,),
+            Padding(
+                padding: const EdgeInsets.only( top:10, bottom: 20),
+                  child: LiveCourseCard(
+                            thumbNail: "https://static.uacdn.net/thumbnail/course/v2/2F5D3214-A282-427D-8FB7-662B5344F71C_plus.png?q=75&w=384&auto=format%2Ccompress",
+                            videoAmount: "",
+                            title:  "What is Web Development ? Complete RoadMap from Basics to Advanced",
+                            userProfile:  "https://static.uacdn.net/thumbnail/course/v2/2F5D3214-A282-427D-8FB7-662B5344F71C_plus.png?q=75&w=384&auto=format%2Ccompress",
+                            userName:  "Deepak Rathore",
+                            price: "123",
+                          ),
+              ),
+            SizedBox(height: 20,),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [

@@ -1,6 +1,4 @@
-
 import 'package:flutter/material.dart';
-
 class CourseCard extends StatefulWidget {
   const CourseCard({
     Key? key,
