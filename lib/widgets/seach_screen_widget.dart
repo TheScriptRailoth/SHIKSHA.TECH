@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:shiksha_tech/links/links.dart';
 import 'package:shiksha_tech/widgets/search_course_card.dart';
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key, required this.title});
@@ -116,8 +117,8 @@ class _SearchScreen extends State<SearchScreen> {
                                           userOffline=false;
                                         });
 
-                                        final url1 = Uri.parse('https://bef1-49-43-41-194.ngrok-free.app/predict?title=' + searchValue);
-                                        final url2 = Uri.parse('https://bef1-49-43-41-194.ngrok-free.app/predictImg?title=' + searchValue);
+                                        final url1 = Uri.parse(Links.x+'/predict?title=' + searchValue);
+                                        final url2 = Uri.parse(Links.x+'/predictImg?title=' + searchValue);
 
                                         try {
                                           final response1 = await http.get(url1);
@@ -272,9 +273,9 @@ class _SearchScreen extends State<SearchScreen> {
               children: [
                 SizedBox(height: MediaQuery.of(context).size.height*.2,),
                 Container(
-                    height: 100,
-                    width: 100,
-                    child: Image.asset('icons/offline.png')
+                    height: 80,
+                    width: 80,
+                    child: Image.asset('images/no-wifi.png')
                 ),
                 SizedBox(height: 10,),
                 Text('You are offline. Please try again later.'),

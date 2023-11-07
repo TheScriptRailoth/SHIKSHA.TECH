@@ -6,6 +6,8 @@ import 'package:http/http.dart' as http;
 import 'package:shiksha_tech/widgets/courses_data.dart';
 import 'package:shiksha_tech/widgets/search_course_card.dart';
 import 'package:shiksha_tech/widgets/search_intern_card.dart';
+
+import 'links/links.dart';
 class SearchInternScreen extends StatefulWidget {
   const SearchInternScreen({super.key});
 
@@ -15,6 +17,8 @@ class SearchInternScreen extends StatefulWidget {
 }
 
 class _SearchInternScreen extends State<SearchInternScreen> {
+  bool userOffline = false;
+  bool serverOffline=false;
   List<Course> searchResults = [];
   bool isLoading = false;
   final TextEditingController _searchController = TextEditingController();
@@ -113,8 +117,8 @@ class _SearchInternScreen extends State<SearchInternScreen> {
                                         isLoading = true; // Set loading state to true
                                       });
 
-                                      final url1=Uri.parse('https://bef1-49-43-41-194.ngrok-free.app/intern?domain=' + searchValue);
-                                      final url2=Uri.parse('https://bef1-49-43-41-194.ngrok-free.app/internCompany?domain=' + searchValue);   try {
+                                      final url1=Uri.parse(Links.x+'/intern?domain=' + searchValue);
+                                      final url2=Uri.parse(Links.x+'/internCompany?domain=' + searchValue);   try {
                                         final response1 = await http.get(url1);
                                         final response2 = await http.get(url2);
 
@@ -143,18 +147,17 @@ class _SearchInternScreen extends State<SearchInternScreen> {
                                               }
                                             }
                                           });
-                                        } else {
-                                          Center(
-                                            child: Container(
-                                              height: 40,
-                                              width: 40,
-                                              child: Image.asset('icons/offline.png'),
-                                            ),
-                                          );
+                                        } else{
+                                          setState(() {
+                                            serverOffline=true;
+                                          });
                                           print(
                                               'Request failed with status: ${response1.statusCode} or ${response2.statusCode}');
                                         }
                                       } catch (error) {
+                                        setState(() {
+                                          userOffline=true;
+                                        });
                                         print('An error occurred: $error');
                                       } finally {
                                         setState(() {
@@ -249,6 +252,36 @@ class _SearchInternScreen extends State<SearchInternScreen> {
           Expanded(
             child: isLoading
                 ? Center(child: CircularProgressIndicator())
+                : serverOffline
+                ? Center(child:
+            Column(
+              children: [
+                SizedBox(height: MediaQuery.of(context).size.height*.2,),
+                Container(
+                    height: 100,
+                    width: 100,
+                    child: Image.asset('icons/offline.png')
+                ),
+                SizedBox(height: 10,),
+                Text('Server is offline. Please try again later.'),
+              ],
+            )
+            )
+              :userOffline
+                ?Center(child:
+            Column(
+              children: [
+                SizedBox(height: MediaQuery.of(context).size.height*.2,),
+                Container(
+                    height: 80,
+                    width: 80,
+                    child: Image.asset('images/no-wifi.png')
+                ),
+                SizedBox(height: 10,),
+                Text('You are offline. Please try again later.'),
+              ],
+            )
+            )
                 : buildSearchResults(),
           ),
 

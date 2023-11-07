@@ -5,6 +5,7 @@ import 'package:shiksha_tech/home_screen.dart';
 import 'package:shiksha_tech/lecture_screen.dart';
 import 'package:shiksha_tech/my_schemes_screen.dart';
 import 'package:shiksha_tech/article_page.dart';
+import 'package:shiksha_tech/live_screen.dart';
 import 'package:shiksha_tech/widgets/add_question_widget.dart';
 import 'package:shiksha_tech/widgets/custom_drawer.dart';
 import 'package:shiksha_tech/widgets/seach_screen_widget.dart';

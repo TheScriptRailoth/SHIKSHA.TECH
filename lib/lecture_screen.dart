@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:video_player/video_player.dart';
 
+import 'links/links.dart';
+
 class LectureScreen extends StatefulWidget {
   const LectureScreen({
     Key? key,
@@ -28,7 +30,7 @@ class _LectureScreenState extends State<LectureScreen> {
   bool isLoading = false;
 
   Future<void> fetchData() async {
-    final url1 = Uri.parse('https://bef1-49-43-41-194.ngrok-free.app/course?title=' + widget.title);
+    final url1 = Uri.parse(Links.x+'/course?title=' + widget.title);
 
     try {
       final response1 = await http.get(url1);
@@ -199,7 +201,7 @@ class _LectureScreenState extends State<LectureScreen> {
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemBuilder: (context, index) {
-                final videoUrl = 'https://4646-49-43-41-194.ngrok-free.app/' +
+                final videoUrl = Links.videos +
                     widget.searchvalue +
                     '/' +
                     searchResults[index] +
