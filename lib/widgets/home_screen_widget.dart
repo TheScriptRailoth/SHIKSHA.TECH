@@ -1,3 +1,4 @@
+import 'package:chewie/chewie.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -8,11 +9,13 @@ import 'package:hidden_drawer_menu/model/screen_hidden_drawer.dart';
 import 'package:share/share.dart';
 import 'package:shiksha_tech/article_page.dart';
 import 'package:shiksha_tech/home_screen.dart';
+import 'package:shiksha_tech/live_screen.dart';
 import 'package:shiksha_tech/message_page.dart';
 import 'package:shiksha_tech/my_schemes_screen.dart';
 import 'package:shiksha_tech/notes_screen.dart';
 import 'package:shiksha_tech/widgets/course_card.dart';
 import 'package:shiksha_tech/widgets/courses_data.dart';
+import 'package:shiksha_tech/widgets/live_course_widget.dart';
 import 'package:shiksha_tech/widgets/place_holder.dart';
 import 'package:shiksha_tech/widgets/profilemenu_widget.dart';
 import 'package:shiksha_tech/widgets/seach_screen_widget.dart';
@@ -663,26 +666,22 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 25),
-                  child: Text("Featured Courses", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 150),
-                  child: Text("See All", style: TextStyle(fontSize: 15, color: Color(0xFF4E74F9), fontWeight: FontWeight.bold),),
+                  child: Text("Live Lectures", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
                 ),
               ],
             ),
             SizedBox(height: 20,),
             Padding(
-                padding: const EdgeInsets.only( top:10, bottom: 20),
-                  child: LiveCourseCard(
-                            thumbNail: "https://static.uacdn.net/thumbnail/course/v2/2F5D3214-A282-427D-8FB7-662B5344F71C_plus.png?q=75&w=384&auto=format%2Ccompress",
-                            videoAmount: "",
-                            title:  "What is Web Development ? Complete RoadMap from Basics to Advanced",
-                            userProfile:  "https://static.uacdn.net/thumbnail/course/v2/2F5D3214-A282-427D-8FB7-662B5344F71C_plus.png?q=75&w=384&auto=format%2Ccompress",
-                            userName:  "Deepak Rathore",
-                            price: "123",
-                          ),
+              padding: const EdgeInsets.only( top:10, bottom: 20),
+              child: LiveCourseCard(
+                thumbNail: "https://static.uacdn.net/thumbnail/course/v2/2F5D3214-A282-427D-8FB7-662B5344F71C_plus.png?q=75&w=384&auto=format%2Ccompress",
+                videoAmount: "",
+                title:  "What is Web Development ? Complete RoadMap from Basics to Advanced",
+                userProfile:  "https://static.uacdn.net/thumbnail/course/v2/2F5D3214-A282-427D-8FB7-662B5344F71C_plus.png?q=75&w=384&auto=format%2Ccompress",
+                userName:  "Deepak Rathore",
+                price: "123",
               ),
+            ),
             SizedBox(height: 20,),
 
             Row(

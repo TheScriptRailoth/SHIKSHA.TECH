@@ -13,10 +13,10 @@ class LiveScreen extends StatefulWidget {
 class _LiveScreenState extends State<LiveScreen> {
   
   late VideoPlayerController videoPlayerController;
-  ChewieController? chewieController;
+  static ChewieController? chewieController;
 
   Future<void> loadVideo()async{
-    videoPlayerController=VideoPlayerController.network('https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4');
+    videoPlayerController=VideoPlayerController.network('https://b3d60035815d.ap-south-1.playback.live-video.net/api/video/v1/ap-south-1.578421575817.channel.JSbdilwhqylC.m3u8');
 
     await Future.wait([
       videoPlayerController.initialize()
@@ -46,9 +46,7 @@ class _LiveScreenState extends State<LiveScreen> {
         //   ],
         // )
     );
-    setState(() {
-
-    });
+    setState(() {});
   }
   
   @override
