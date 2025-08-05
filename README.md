@@ -1,10 +1,9 @@
-# Smart India Hackathon 2023
-SIH 2023 brings the next generation evolution by inclusion of new methodology to inculcate the culture of startup and innovation ecosystem across different age groups.
+# Shiksha.Tech - Modular Edtech Platform
+Shiksha.tech is an online learning platform that aims to revolutionize the education system by providing comprehensive support for overall development
 
-# Problem Statement
-**PSID:** SIH3126
-
-**PS Title:** Ideate and implement a system to enhance the quality of education in rural areas.
+# Demo
+- Demo Video : https://drive.google.com/file/d/1DYioI7SXBqkdvRP6KwDSyprTMJpkSc1G/view?usp=sharing
+- Apk : https://drive.google.com/file/d/1VDkan4Wxp3HT_NkHOSGesSBFQlGiLpCf/view?usp=sharing
 
 **Description:** The aim of the system should not only focus on increasing the literacy rate but also should assist to elevate the communication skills and knowledge of the targeted society. The system should offer : 
 * Study materials and mentor access. 
